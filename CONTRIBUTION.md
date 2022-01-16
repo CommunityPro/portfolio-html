@@ -22,9 +22,8 @@ When making changes, fixing an issue or adding features to this project, please 
 
 - And remember, the smaller the change, the faster for it to be reviewed and merged. 🙂
 
-> Do not delete or modify someone else's code in this repository, unless stated otherwise.
+- Do not delete or modify someone else's code in this repository, unless stated otherwise.
 
-- Fix linting changes before committing.
 - Give a meaningful name to whatever file or folder you are adding.
 
 ### Commits ✨
@@ -36,7 +35,7 @@ Write your commit message in the imperative: **"Fix bug"** and not **"Fixed bug"
 
 ### Resources 📖
 
-If you are completely new to open source contribution and everything written here sounds confusing to you, 😕 I highly recommend you check out these resources. They will get you up to speed and you can come back to contribute your awesome ideas.
+If you are completely new to open source contribution and everything written here sounds confusing to you, I highly recommend you check out these resources. They will get you up to speed and you can come back to contribute your awesome ideas.
 
 #### Videos
 
@@ -57,3 +56,4 @@ You can refer to the following articles on basics of Git and Github and also con
 Tips from me 😇
 
 It always takes time to understand and learn. So, do not worry at all. I know you have got this!
+<img src="https://user-images.githubusercontent.com/62628408/147913211-e2e7c011-e196-4255-9cec-bed3f6a65813.png" width="100%">
