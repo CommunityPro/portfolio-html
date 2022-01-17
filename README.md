@@ -69,7 +69,7 @@ Before making any changes, ensure you have raised an issue <a href="">here</a>, 
 └── .gitignore
 ```
 
-First, fork this repository to your own account. Then use git clone <url> to bring your forked repository down to your local machine (remember to get the URL for your repository, not the original). Optionally, use git remote add upstream <url> to add the original repository as the upstream (this is helpful for keeping your fork up-to-date).
+<!-- First, fork this repository to your own account. Then use git clone <url> to bring your forked repository down to your local machine (remember to get the URL for your repository, not the original). Optionally, use git remote add upstream <url> to add the original repository as the upstream (this is helpful for keeping your fork up-to-date).
 Adding Content
 
 The root homepage is located at index.html. This is where a visitor will land when they visit our URL.
@@ -135,7 +135,7 @@ Documentation: You are always welcome to update our documentation (like this fil
 Features: If you have ideas for new features or improvements, feel free to open an issue <a href="">here</a>
 Bug Reports: We rely on our users to help identify bugs - if you see something wrong, please let us know with an issue!
 
-## Frequently Asked Questions (FAQ)
+## Frequently Asked Questions (FAQ) -->
 
 ## Support
 
