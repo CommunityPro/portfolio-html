@@ -11,7 +11,9 @@
 <img src="https://img.shields.io/github/labels/CommunityPro/portfolio-html/good%20first%20issue">
 <img src="https://img.shields.io/github/labels/CommunityPro/portfolio-html/help%20wanted">
 <img src="https://img.shields.io/github/labels/Communitypro/portfolio-html/bug">
+<a href="https://github.com/CommunityPro/portfolio-html/labels/enhancement"> 
 <img src="https://img.shields.io/github/labels/Communitypro/portfolio-html/enhancement">
+</a>       
 </p>
 
 <p align="center">Build your portfolio using this super easy template. Free to use if you are a member of the community or a contributor to this project. if not, read our <a href="">requirements</a> if you plan on using this template for your portfolio.</p>
