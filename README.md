@@ -1,4 +1,7 @@
-<!-- <img src="" align="center" width=""> -->
+<p align="center">
+<img src="https://user-images.githubusercontent.com/62628408/149734737-cd534c5b-03d9-4ad3-af77-70d6784d98cc.png" align="center" width="50%">
+</p>
+
 
 <h1 align="center">Portfolio Template - HTML</h1>
 
@@ -22,7 +25,9 @@
 <img src="https://forthebadge.com/images/badges/open-source.svg">
 </p>
 
-<!-- Screenshot of template -->
+<!-- <img src="https://user-images.githubusercontent.com/62628408/149735279-24460e7d-0c7d-440f-8789-e0e419525ad2.png"> -->
+
+<img src="https://user-images.githubusercontent.com/62628408/149736212-e7051d4f-569f-45f4-a7c0-51458316e06d.png" width="100%">
 
 ## How to Contribute
 
