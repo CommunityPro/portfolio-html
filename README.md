@@ -27,9 +27,15 @@
 <img src="https://forthebadge.com/images/badges/open-source.svg">
 </p>
 
-<!-- <img src="https://user-images.githubusercontent.com/62628408/149735279-24460e7d-0c7d-440f-8789-e0e419525ad2.png"> -->
+<hr>
 
 <img src="https://user-images.githubusercontent.com/62628408/149736212-e7051d4f-569f-45f4-a7c0-51458316e06d.png" width="100%">
+
+## Design credit: 
+- <a href="https://github.com/CommunityPro">Communitypro</a>
+- <a href="https://dribbble.com/shots/14385288-Portfolio-Landing-Page?utm_source=Clipboard_Shot&utm_campaign=oguzyagiz&utm_content=Portfolio%3A%20Landing%20Page&utm_medium=Social_Share&utm_source=Clipboard_Shot&utm_campaign=oguzyagiz&utm_content=Portfolio%3A%20Landing%20Page&utm_medium=Social_Share">Dribble Inspiration</a>
+- <a href="https://github.com/frankiefab100">Franklin U.O. Ohaegbulam</a>
+- <a href="https://openpeeps.com/">Open Peeps Illustration</a> by <a href="https://twitter.com/pablostanley">Pablo Stanley</a> 
 
 ## How to Contribute
 
