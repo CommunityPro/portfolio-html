@@ -8,7 +8,9 @@
 <p align="center">
 <img src="https://img.shields.io/github/repo-size/CommunityPro/portfolio-html?color=green&label=project%20size">
 <img src="https://img.shields.io/github/issues-raw/Communitypro/portfolio-html?color=green">
+<a href="https://github.com/CommunityPro/portfolio-html/labels/good%20first%20issue">     
 <img src="https://img.shields.io/github/labels/CommunityPro/portfolio-html/good%20first%20issue">
+</a>
 <img src="https://img.shields.io/github/labels/CommunityPro/portfolio-html/help%20wanted">
 <img src="https://img.shields.io/github/labels/Communitypro/portfolio-html/bug">
 <a href="https://github.com/CommunityPro/portfolio-html/labels/enhancement"> 
