@@ -11,7 +11,9 @@
 <a href="https://github.com/CommunityPro/portfolio-html/labels/good%20first%20issue">     
 <img src="https://img.shields.io/github/labels/CommunityPro/portfolio-html/good%20first%20issue">
 </a>
+<a href="https://github.com/CommunityPro/portfolio-html/labels/help%20wanted"> 
 <img src="https://img.shields.io/github/labels/CommunityPro/portfolio-html/help%20wanted">
+</a>
 <a href="https://github.com/CommunityPro/portfolio-html/labels/bug">
 <img src="https://img.shields.io/github/labels/Communitypro/portfolio-html/bug">
 </a>
