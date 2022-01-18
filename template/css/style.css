@@ -2,10 +2,34 @@
    * Flex property
    * Grid layout
    * Cards and sections
-
-   ! Only touch this CSS if you want to change the layout and hierachy of the template
 */
 
+@import url(https://fonts.googleapis.com/css?family=Raleway:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+
+/* variables */
+:root {
+  --primary-color: #ffcd42;
+  --secondary-color: #ffd35c;
+  --bg-primary: #ffffff;
+  --text-color: #222222;
+  --bg-secondary: #000000;
+  --bg-secondary-two: #111111;
+}
+
+/* Reset default styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Main styling */
 body {
-  background: #ffcd42;
+  background: var(--bg-primary);
+  font-family: "Raleway", sans-serif;
+  line-height: 1.5;
 }
