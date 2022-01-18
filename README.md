@@ -7,7 +7,9 @@
 
 <p align="center">
 <img src="https://img.shields.io/github/repo-size/CommunityPro/portfolio-html?color=green&label=project%20size">
+<a href="https://github.com/CommunityPro/portfolio-html/issues?q=is%3Aopen+is%3Aissue">
 <img src="https://img.shields.io/github/issues-raw/Communitypro/portfolio-html?color=green">
+</a>
 <a href="https://github.com/CommunityPro/portfolio-html/labels/good%20first%20issue">     
 <img src="https://img.shields.io/github/labels/CommunityPro/portfolio-html/good%20first%20issue">
 </a>
@@ -47,7 +49,7 @@
 
 Are you contributing to this project, please ensure all pull requests and contributions comply with our <a href="https://github.com/CommunityPro/portfolio-html/blob/main/CONTRIBUTING.md">guidelines</a>
 
-Before making any changes, ensure you have raised an issue <a href="">here</a>, unless it is a minimal change like Typo error then you can go right ahead.
+Before making any changes, ensure you have raised an issue <a href="https://github.com/CommunityPro/portfolio-html/issues/new/choose">here</a>, unless it is a minimal change like Typo error then you can go right ahead.
 
 ## Folder Structure
 
