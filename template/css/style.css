@@ -1,3 +1,11 @@
+/* This is the required project styling. Will contain essential CSS styles like:
+   * Flex property
+   * Grid layout
+   * Cards and sections
+
+   ! Only touch this CSS if you want to change the layout and hierachy of the template
+*/
+
 body {
   background: #ffcd42;
 }
