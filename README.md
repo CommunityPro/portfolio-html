@@ -47,7 +47,7 @@
 
 Are you contributing to this project, please ensure all pull requests and contributions comply with our <a href="https://github.com/CommunityPro/portfolio-html/blob/main/CONTRIBUTING.md">guidelines</a>
 
-Before making any changes, ensure you have raised an issue <a href="">here</a>, unless it is a minimal change like Typo error then you can go right ahead.
+Before making any changes, ensure you have raised an issue <a href="https://github.com/CommunityPro/portfolio-html/issues/new/choose">here</a>, unless it is a minimal change like Typo error then you can go right ahead.
 
 ## Folder Structure
 
