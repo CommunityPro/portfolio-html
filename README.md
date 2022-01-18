@@ -10,7 +10,9 @@
 <img src="https://img.shields.io/github/issues-raw/Communitypro/portfolio-html?color=green">
 <img src="https://img.shields.io/github/labels/CommunityPro/portfolio-html/good%20first%20issue">
 <img src="https://img.shields.io/github/labels/CommunityPro/portfolio-html/help%20wanted">
+<a href="https://github.com/CommunityPro/portfolio-html/labels/bug">
 <img src="https://img.shields.io/github/labels/Communitypro/portfolio-html/bug">
+</a>
 <a href="https://github.com/CommunityPro/portfolio-html/labels/enhancement"> 
 <img src="https://img.shields.io/github/labels/Communitypro/portfolio-html/enhancement">
 </a>       
