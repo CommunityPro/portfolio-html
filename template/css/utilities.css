@@ -1,0 +1,32 @@
+/* ?This is where reusable styling of this template will be. 
+   !Will contain things like:
+   * Button styling
+   * Background color styling
+   * padding and margin
+*/
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 1rem 2.3rem;
+  border-radius: 30px;
+  text-transform: uppercase;
+}
+
+.btn-primary {
+  background: var(--primary-color);
+}
+.btn-secondary {
+  background: var(--bg-primary);
+}
+
+/* Font weight */
+.weight-small {
+  font-weight: 300px;
+}
+.weight-semibold {
+  font-weight: 500px;
+}
+.weight-bold {
+  font-weight: 700px;
+}
