@@ -7,7 +7,9 @@
 
 <p align="center">
 <img src="https://img.shields.io/github/repo-size/CommunityPro/portfolio-html?color=green&label=project%20size">
+<a href="https://github.com/CommunityPro/portfolio-html/issues?q=is%3Aopen+is%3Aissue">
 <img src="https://img.shields.io/github/issues-raw/Communitypro/portfolio-html?color=green">
+</a>
 <a href="https://github.com/CommunityPro/portfolio-html/labels/good%20first%20issue">     
 <img src="https://img.shields.io/github/labels/CommunityPro/portfolio-html/good%20first%20issue">
 </a>
