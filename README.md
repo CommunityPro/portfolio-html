@@ -21,7 +21,11 @@
 </a>
 <a href="https://github.com/CommunityPro/portfolio-html/labels/enhancement"> 
 <img src="https://img.shields.io/github/labels/Communitypro/portfolio-html/enhancement">
-</a>       
+</a>
+
+<a href="https://app.netlify.com/sites/cpro-portfolio-html/deploys">
+    <img src="https://api.netlify.com/api/v1/badges/d831b80b-40d4-473a-b552-13055a16a6da/deploy-status">
+</a>
 </p>
 
 <p align="center">Build your portfolio using this super easy template. Free to use if you are a member of the community or a contributor to this project. if not, read our <a href="">requirements</a> if you plan on using this template for your portfolio.</p>
