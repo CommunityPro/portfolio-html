@@ -145,7 +145,12 @@ Bug Reports: We rely on our users to help identify bugs - if you see something w
 
 ## Frequently Asked Questions (FAQ) -->
 
-## Support
+<div align="center">
+  <a href="https://www.buymeacoffee.com/evavic44">
+    <img width="150px" alt="bmc-button" src="https://user-images.githubusercontent.com/62628408/127788747-8850d386-fc61-4fff-b18f-8c5ee597be34.png">
+  </a>
+<img width="150px" height="100%" src="https://img.shields.io/badge/sponsor-30363D?style=for-the-badge&logo=GitHub-Sponsors&logoColor=#white">
+</div>
 
 If you like this project, kindly star ⭐ and share this project. It means the world to us.
 You can also offer support by donating to keep this project going.
