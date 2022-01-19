@@ -8,12 +8,32 @@
 
 /* variables */
 :root {
+   /* Colors */
   --primary-color: #ffcd42;
   --secondary-color: #ffd35c;
   --bg-primary: #ffffff;
   --text-color: #222222;
   --bg-secondary: #000000;
   --bg-secondary-two: #111111;
+
+  /* Font Weight */
+  --weight-small: 400;
+  --weight-semibold: 600;
+  --weight-bold: 800;
+
+  /* Max width */
+  --width-small: 600px;
+  --width-medium: 1100px;
+  --width-large: 1300px;
+}
+
+[data-theme="dark"] {
+  --primary-color: #ffcd42;
+  --secondary-color: #ffd35c;
+  --bg-primary: #000000;
+  --text-color: #ffffff;
+  --bg-secondary: #ffffff;
+  --bg-secondary-two: #f4f4f4;
 }
 
 /* Reset default styling */
@@ -27,9 +47,63 @@ ul {
   list-style: none;
 }
 
+a {
+   text-decoration: none;
+   color: var(--text-color);
+}
+
 /* Main styling */
 body {
   background: var(--bg-primary);
+  color: var(--text-color);
   font-family: "Raleway", sans-serif;
   line-height: 1.5;
+}
+
+#hero {
+  height: 100vh;
+}
+
+/* Navbar */
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  width: 100%;
+}
+
+.navbar ul {
+  display: flex;
+  align-items: center;
+}
+
+.navbar ul li a {
+   margin: 0 1rem;
+   font-size: 0.8rem;
+   font-weight: var(--weight-semibold);
+}
+
+.navbar #logo img {
+  display: block;
+  width: 40px;
+}
+
+.navbar .btn {
+   margin-right: 1.5rem;
+}
+
+/* hamburger */
+.hamburger {
+  display: none;
+}
+
+.bar {
+  display: block;
+  width: 23px;
+  height: 3px;
+  margin: 4px auto;
+  transition: all 0.3s ease-in-out;
+  border-radius: 30px;
+  background-color: var(--bg-secondary);
 }
