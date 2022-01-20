@@ -26,6 +26,11 @@
   background: var(--bg-primary);
 }
 
+/* add hover to resume button */
+.btn-primary:hover {
+  background: var(--secondary-color);
+}
+
 /* Dark mode toggle */
 #switch {
   display: none;
