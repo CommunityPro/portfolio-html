@@ -28,7 +28,7 @@
 </a>
 </p>
 
-<p align="center">Build your portfolio using this super easy template. Free to use if you are a member of the community or a contributor to this project. if not, read our <a href="">requirements</a> if you plan on using this template for your portfolio.</p>
+<p align="center">Build your portfolio using this super easy template. Free to use if you are a member of the community or a contributor to this project. if not, read our <a href="https://github.com/CommunityPro/portfolio-html/blob/main/REQUIREMENTS.md">requirements</a> if you plan on using this template for your portfolio.</p>
 
 <p align="center">This project is made from the tireless efforts of the community, so feel free to support our work by contributing, staring ✨ the project or <a href="">sponsoring</a> us. 🙏🏽</p>
 
