@@ -6,9 +6,9 @@
 */
 
 .container {
-   max-width: var(--width-medium);
-   margin: 0 auto;
-   padding: 1rem 2rem;
+  max-width: var(--width-medium);
+  margin: 0 auto;
+  padding: 1rem 2rem;
 }
 
 /* Buttons */
@@ -21,6 +21,7 @@
 
 .btn-primary {
   background: var(--primary-color);
+  color: #000000;
 }
 .btn-secondary {
   background: var(--bg-primary);
