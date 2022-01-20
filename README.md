@@ -63,7 +63,7 @@ Before making any changes, ensure you have raised an issue <a href="https://gith
 │   ├── index.html
 │   ├── css
 │   │   ├── style.css
-│   │   ├── global.css
+│   │   ├── utilities.css
 │   ├── assets
 │   │   ├── favicon
 │   │   │   ├── android-chrome-192x192
@@ -91,9 +91,12 @@ Before making any changes, ensure you have raised an issue <a href="https://gith
 └── .gitignore
 ```
 
-## Changing Markup
-The root homepage of this project is located at `/template/index.html` -This is the default page you see when you visit the site.
-When it comes to updating the markup to fit your style, here are a few things you can change: 
+<div align="center">
+    <h1>✨ How to Customize this Template ✨</h1>
+</div>
+
+The root page of this project is located at `/template/index.html` This is the default page you see when you visit the site.
+Want to customize this template to suit your style, here are a few things you can change: 
 
 ### 1. Logo
 The logo of this template is controlled by this line in the `index.html` markup, replace the `./assets/logo.png` with your logo link or replace the current logo image without yours and rename it to `logo.png`
@@ -111,16 +114,17 @@ The logo of this template is controlled by this line in the `index.html` markup,
    <li><a class="nav-link" href="#">PROJECTS</a></li>
    <li><a class="nav-link" href="#">CONTACT</a></li>
    <li><a class="nav-link" href="#">BlOG</a></li>
-   <li><a class="nav-link btn btn-primary" href="#">RESUME <i class="fas fa-arrow-right"></i></a></li>     
+   <li><a class="nav-link btn btn-primary" href="#">RESUME <i class="fas fa-arrow-right"></i></a>
+   </li>     
 </ul>
 ```
-Replace the `#` symbol with your respective link. Delete any `nav-link` that is not being used or edit the name with your own preffered link.
-The Last navigation link (highlightd yellow button on the navigation) is styled specially using the `btn` & `btn-primary` classes.
+Replace the `#` symbol with your respective link. Delete any `nav-link` that is not being used or edit the name with your own preffered link source.
+- The Last navigation link is the highlightd yellow button on the template. Which is styled with the `btn` & `btn-primary` classes.
 
 ## Styling
 We are using plain `CSS` for this project and you can find that in the `template/css/` folder
 - Style.css is the main file
-- global.css is where reusable styling will be. 
+- utilities.css is where reusable styling will be. 
 
 ## Sponsor
 <div>
