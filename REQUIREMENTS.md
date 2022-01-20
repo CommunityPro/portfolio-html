@@ -1,6 +1,6 @@
-Hello, 🤩👋🏾 Thank you for downloading or using interest this template, we hope you like it. Please link back to us if you have used this template, we would love to see how you used or customized this. 😇
+<div align="center"><h1>Requirements 🙌🏾✨</h1></div> 
 
-## Requirements
+Hello, 🤩👋🏾 Thank you for downloading or using interest this template, we hope you like it. Please link back to us if you have used this template, we would love to see how you used or customized this. 😇
 These are not requirements per se, see them as giving back to the efforts of the community and the members who built this project.
 
 ## 1. Star the project
