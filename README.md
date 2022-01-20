@@ -58,12 +58,20 @@ Before making any changes, ensure you have raised an issue <a href="https://gith
 ## Folder Structure
 
 ```bash
-├── dist
+├── template
 │   ├── index.html
 │   ├── css
 │   │   ├── style.css
 │   │   ├── global.css
 │   ├── assets
+│   │   ├── favicon
+│   │   │   ├── android-chrome-192x192
+│   │   │   ├── android-chrome-512x512
+│   │   │   ├── apple-touch-icon
+│   │   │   ├── favicon-16x16
+│   │   │   ├── favicon-32x32
+│   │   │   ├── favicon.ico
+│   │   │   ├── site.webmanifest   
 │   │   ├── profile-image
 │   │   ├── logo
 │   ├── js
@@ -77,6 +85,7 @@ Before making any changes, ensure you have raised an issue <a href="https://gith
 ├── CONTRIBUTING.md
 ├── LICENSE
 ├── README.md
+├── REQUIREMENTS.md
 ├── package.json
 └── .gitignore
 ```
