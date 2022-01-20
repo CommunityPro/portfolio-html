@@ -54,7 +54,7 @@ Before making any changes, ensure you have raised an issue <a href="https://gith
 ## Folder Structure
 
 ```bash
-├── dist
+├── template
 │   ├── index.html
 │   ├── css
 │   │   ├── style.css
