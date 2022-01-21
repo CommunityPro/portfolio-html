@@ -83,6 +83,7 @@ body {
 .navbar .nav-menu {
   display: flex;
   align-items: center;
+  background: var(--bg-primary);
 }
 
 .navbar .nav-link {
