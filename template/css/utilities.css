@@ -23,8 +23,12 @@
   background: var(--primary-color);
   color: #000000;
 }
+
 .btn-secondary {
-  background: var(--bg-primary);
+  margin: 5px 0;
+  background-color: var(--bg-secondary);
+  color: var(--bg-primary);
+}
 }
 
 /* add hover to resume button */
