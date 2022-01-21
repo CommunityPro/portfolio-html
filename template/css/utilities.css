@@ -56,3 +56,23 @@
 #switch:checked + .toggle-icons .moon {
   transform: rotate(250deg);
 }
+
+/* Header Container */
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 1.5rem;
+  padding: 1rem;
+}
+
+.header-container > div {
+  margin-top: 1rem;
+}
+
+.header-container h2 {
+  font-size: 3rem;
+  line-height: 1.2;
+}
