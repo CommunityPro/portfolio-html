@@ -41,7 +41,7 @@
 
 <hr>
 
-<img src="https://user-images.githubusercontent.com/62628408/149736212-e7051d4f-569f-45f4-a7c0-51458316e06d.png" width="100%">
+<img src="https://user-images.githubusercontent.com/62628408/150613011-b78a7f5a-0af1-4312-aab0-0022e7258693.png" width="100%">
 <a href="https://gitpod.io/https:/CommunityPro/portfolio-html"><img src="https://gitpod.io/button/open-in-gitpod.svg"></a>
 
 ## Design credit: 
