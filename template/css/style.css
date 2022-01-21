@@ -69,12 +69,17 @@ body {
 
 /* Navbar */
 .navbar .container {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   z-index: 20;
   height: 80px;
   width: 100%;
+  margin-top: 0.5rem;
 }
 
 .navbar .nav-menu {
@@ -117,9 +122,9 @@ body {
   .navbar .nav-menu {
     position: fixed;
     right: -100vw;
-    top: 4.3rem;
+    top: 4.5rem;
     flex-direction: column;
-    width: 400px;
+    width: calc(80% - 10px);
     transition: 0.3s;
     box-shadow: var(--shadow);
     padding: 2rem;
