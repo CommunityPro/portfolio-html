@@ -25,7 +25,7 @@
 }
 
 .btn-secondary {
-  margin: 5% auto;
+  margin: 5px 0;
   background-color: var(--bg-secondary);
   color: var(--bg-primary);
 }
