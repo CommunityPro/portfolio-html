@@ -17,6 +17,7 @@
   padding: 0.75rem 1.9rem;
   border-radius: 30px;
   text-transform: uppercase;
+  font-size: 0.82rem;
 }
 
 .btn-primary {
@@ -28,7 +29,6 @@
   margin: 5px 0;
   background-color: var(--bg-secondary);
   color: var(--bg-primary);
-}
 }
 
 /* add hover to resume button */
