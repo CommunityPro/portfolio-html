@@ -121,6 +121,46 @@ The logo of this template is controlled by this line in the `index.html` markup,
 Replace the `#` symbol with your respective link. Delete any `nav-link` that is not being used or edit the name with your own preffered link source.
 - The Last navigation link is the highlightd yellow button on the template. Which is styled with the `btn` & `btn-primary` classes.
 
+### 3. Profile Image
+Replace the icon or user profile with your profile image. Image can be found in the `/assets/profile-image.png`.
+```html
+<img class="profile-image" src="./assets/profile-image.png" alt="" />
+```
+You can add the image locally by replacing it with the `/assets/profile-image.png`.
+Or replace the `src` link in the HTML file with your preferred image. I recommmend you copy your GitHub profile image link, so the image changes anytime you update it on GitHub.
+
+### 4. Name
+Edit the name on the welcome message with your own name. This line of text can be found in the `/template/index.html` file.
+Replace `Franklin` with your own name. 
+```html
+<h1>Hi I'm Franklin</h1>
+```
+
+### 5. Job Title
+Summarize what you do in 5 lines and add it into the `<h2></h2>` line. Add the first two in the first `<h2>` element and add the remaining 4 on the next `<h2>`
+```html
+<h2>Building digital</h2>
+<h2>products, brands, and experience.</h2>
+```
+
+### 6. Job Description
+Update the job description with your information. Recommend 20 words.
+```html
+<p>
+  A Frontend Developer and Visual Design with experience in web
+  design, brand identity and product design.
+</p>
+```
+
+### 7. Connect With Me
+Replace the `#` on the connect with me button with a link. You can choose what link you want your visitors to go when they click this button. Social links, email adrress, phone number, it's completely up to you.
+```html
+<a href="#" class="btn btn-secondary">Connect With Me</a>
+```
+- Email: `<a href="mailto:user@gmail.com" class="btn btn-secondary">Connect With Me</a>`
+OR
+- Phone: `<a href="tel:+23400000000" class="btn btn-secondary">Connect With Me</a>`
+
 ## Styling
 We are using plain `CSS` for this project and you can find that in the `template/css/` folder
 - Style.css is the main file
