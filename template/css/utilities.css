@@ -67,7 +67,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
   margin-top: 1.5rem;
   padding: 1rem;
 }
@@ -76,7 +75,11 @@
   margin-top: 1rem;
 }
 
-.header-container h2 {
+.content-text {
+  text-align: center;
+}
+
+.content-text h2 {
   font-size: 3rem;
   line-height: 1.2;
 }
