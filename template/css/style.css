@@ -101,6 +101,12 @@ body {
   margin-right: 1.5rem;
 }
 
+.fas.fa-arrow-right {
+  transform: rotate(-30deg);
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+}
+
 /* hamburger */
 .hamburger {
   display: none;
