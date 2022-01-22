@@ -134,6 +134,14 @@ body {
   border-radius: 50%;
 }
 
+.header-container h1 {
+  margin-top: 15px;
+}
+
+.content-text p {
+  margin: 20px auto;
+}
+
 /* Responsiveness */
 @media (max-width: 670px) {
   .navbar .nav-menu {
