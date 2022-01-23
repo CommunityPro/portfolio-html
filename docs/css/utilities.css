@@ -84,3 +84,57 @@
   font-size: 3rem;
   line-height: 1.2;
 }
+
+/* Project cards */
+.card {
+  padding: 1rem;
+  background: var(--card-background);
+  color: #ffffff;
+  border-radius: 5px;
+  transition: 0.4s ease-in-out;
+  cursor: pointer;
+}
+
+.card a {
+  color: #ffffff;
+}
+
+.card:hover {
+  box-shadow: inset 0 100px 1000px 10px rgba(0, 0, 0, 0.8);
+}
+
+.card:hover .project-info {
+  opacity: 1;
+}
+
+/* Project Images */
+
+/* project 1 */
+.card:nth-child(1) {
+  background: url(../assets/project/project-one.png) center center/cover;
+}
+
+/* Project 2 */
+.card:nth-child(2) {
+  background: url(../assets/project/project-two.png) center center/cover;
+}
+
+/* Project 3 */
+.card:nth-child(3) {
+  background: url(../assets/project/project-three.png) center center/cover;
+}
+
+/* Project 4 */
+.card:nth-child(4) {
+  background: url(../assets/project/project-four.png) center center/cover;
+}
+
+/* Project 5 */
+.card:nth-child(5) {
+  background: url(../assets/project/project-five.png) center center/cover;
+}
+
+/* Project 6 */
+.card:nth-child(6) {
+  background: url(../assets/project/project-six.png) center center/cover;
+}
