@@ -109,7 +109,6 @@ body {
 }
 
 .fas.fa-arrow-right {
-  transform: rotate(-30deg);
   margin-left: 0.5rem;
   font-size: 0.9rem;
 }
@@ -143,7 +142,12 @@ body {
 
 /* Projects */
 #projects {
+  text-align: center;
   margin: 2rem auto 5rem;
+}
+
+#projects .btn {
+  margin: 1.5rem;
 }
 
 .project {
@@ -179,7 +183,6 @@ body {
 }
 
 /* Responsiveness */
-
 
 @media (max-width: 1000px) {
   .project {
