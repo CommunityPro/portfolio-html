@@ -142,8 +142,8 @@ body {
 }
 
 /* Projects */
-.project-container {
-  margin: 1.5rem 0;
+#projects {
+  margin: 2rem auto 5rem;
 }
 
 .project {
@@ -151,7 +151,6 @@ body {
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: minmax(250px, auto);
   grid-gap: 0.9rem;
-  margin: 2rem 0;
 }
 
 .card .project-bio p {
