@@ -43,6 +43,11 @@
   --shadow: 0 2px 10px rgba(95, 95, 95, 0.2);
 }
 
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+}
+
 /* Reset default styling */
 * {
   margin: 0;
