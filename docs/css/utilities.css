@@ -97,6 +97,13 @@
 
 .card a {
   color: #ffffff;
+  transition: 0.25s ease-in-out;
+  font-size: 1.1rem;
+  margin-right: 0.3rem;
+}
+
+.card a:hover {
+  color: var(--primary-color);
 }
 
 .card:hover {
