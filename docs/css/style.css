@@ -175,6 +175,15 @@ body {
 }
 
 /* Responsiveness */
+
+
+@media (max-width: 1000px) {
+  .project {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 670px) {
   .navbar .nav-menu {
     position: fixed;
@@ -234,5 +243,12 @@ body {
 
   .hamburger.active .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+@media (max-width: 600px) {
+  .project {
+    display: grid;
+    grid-template-columns: 1fr;
   }
 }
