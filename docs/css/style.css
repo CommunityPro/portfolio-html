@@ -182,6 +182,22 @@ body {
   left: 10px;
 }
 
+/* Footer */
+#footer {
+  background: #111111;
+  color: #ffffff;
+  min-height: 150px;
+}
+
+#footer a {
+  color: #fff;
+}
+
+#footer .social img {
+  width: 20px;
+  height: 20px;
+}
+
 /* Responsiveness */
 
 @media (max-width: 1000px) {
