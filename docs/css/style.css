@@ -132,26 +132,29 @@ body {
 #hero {
   display: flex;
   flex-direction: column;
-  min-height: 60vh;
+  height: 100%;
 }
 
 .profile-image {
   width: 150px;
   border-radius: 50%;
 }
-.division{
-  border: 3px solid var(--card-background);
+.division {
+  width: 100%;
+  height: 2px;
   background-color: var(--card-background);
   margin: 5.5rem 0;
 }
 /* Projects */
 #projects {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
   margin: 2rem auto 5rem;
 }
 
 #projects .btn {
-  margin: 1.5rem;
+  align-self: center;
+  margin: 2rem;
 }
 
 .project {
