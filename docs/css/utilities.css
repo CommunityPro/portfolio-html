@@ -83,8 +83,11 @@
 .content-text h2 {
   font-size: 3rem;
   line-height: 1.2;
+  padding: 12px;
 }
-
+.content-text p{
+  padding: 9px;
+}
 /* Project cards */
 .card {
   padding: 1rem;
