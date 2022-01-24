@@ -73,18 +73,22 @@ body {
 }
 
 /* Navbar */
-.navbar .container {
-  position: sticky;
+.navbar {
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  z-index: 20;
+  background: var(--bg-primary);
+}
+
+.navbar .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   z-index: 20;
   height: 80px;
   width: 100%;
-  margin-top: 0.5rem;
 }
 
 .navbar .nav-menu {
@@ -115,6 +119,7 @@ body {
 
 /* hamburger */
 .hamburger {
+  margin-bottom: 0.1rem;
   display: none;
 }
 
@@ -154,7 +159,7 @@ body {
 
 #projects .btn {
   align-self: center;
-  margin: 2rem;
+  margin: 2rem 0;
 }
 
 .project {
@@ -239,6 +244,9 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+}
+
 @media (max-width: 670px) {
   .navbar .nav-menu {
     position: fixed;
@@ -300,6 +308,7 @@ body {
     transform: translateY(-8px) rotate(-45deg);
   }
 }
+
 @media (max-width: 600px) {
   .project {
     display: grid;

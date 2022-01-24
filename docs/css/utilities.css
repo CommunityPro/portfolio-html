@@ -11,6 +11,12 @@
   padding: 1rem 2rem;
 }
 
+h1::selection,
+h2::selection {
+  color: #111;
+  background: var(--primary-color);
+}
+
 /* Buttons */
 .btn {
   display: inline-block;
@@ -68,7 +74,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 1.5rem;
+  margin-top: 8rem;
   padding: 1rem;
 }
 
@@ -78,16 +84,21 @@
 
 .content-text {
   text-align: center;
+  margin: 1.5rem 0;
 }
 
 .content-text h2 {
   font-size: 3rem;
   line-height: 1.2;
-  padding: 12px;
+  transition: 0.2s ease-in-out;
 }
-.content-text p{
-  padding: 9px;
+
+.content-text p {
+  padding: 0.5rem;
+  margin: 0 auto;
+  max-width: 700px;
 }
+
 /* Project cards */
 .card {
   padding: 1rem;
@@ -147,4 +158,15 @@
 /* Project 6 */
 .card:nth-child(6) {
   background: url(../assets/project/project-six.png) center center/cover;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .header-container {
+    margin-top: 7rem;
+  }
+
+  .content-text h2 {
+    font-size: 2.5rem;
+  }
 }
