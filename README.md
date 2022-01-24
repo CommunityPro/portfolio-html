@@ -95,10 +95,10 @@ Before making any changes, ensure you have raised an issue <a href="https://gith
     <h1>✨ How to Customize this Template ✨</h1>
 </div>
 
-The root page of this project is located at `/template/index.html` This is the default page you see when you visit the site.
+The root page of this project is located at `/docs/index.html` This is the default page you see when you visit the site.
 Want to customize this template to suit your style, here are a few things you can change: 
 
-### 1. Logo
+## 1. Logo
 The logo of this template is controlled by this line in the `index.html` markup, replace the `./assets/logo.png` with your logo link or replace the current logo image without yours and rename it to `logo.png`
 
 ```html
@@ -108,7 +108,7 @@ The logo of this template is controlled by this line in the `index.html` markup,
 </h1>
 ```
 
-### 2. Navigation Links
+## 2. Navigation Links
 ```html
 <ul class="nav-menu">
    <li><a class="nav-link" href="#">PROJECTS</a></li>
@@ -121,7 +121,7 @@ The logo of this template is controlled by this line in the `index.html` markup,
 Replace the `#` symbol with your respective link. Delete any `nav-link` that is not being used or edit the name with your own preffered link source.
 - The Last navigation link is the highlightd yellow button on the template. Which is styled with the `btn` & `btn-primary` classes.
 
-### 3. Profile Image
+## 3. Profile Image
 Replace the icon or user profile with your profile image. Image can be found in the `/assets/profile-image.png`.
 ```html
 <img class="profile-image" src="./assets/profile-image.png" alt="" />
@@ -129,21 +129,21 @@ Replace the icon or user profile with your profile image. Image can be found in 
 You can add the image locally by replacing it with the `/assets/profile-image.png`.
 Or replace the `src` link in the HTML file with your preferred image. I recommmend you copy your GitHub profile image link, so the image changes anytime you update it on GitHub.
 
-### 4. Name
-Edit the name on the welcome message with your own name. This line of text can be found in the `/template/index.html` file.
+## 4. Name
+Edit the name on the welcome message with your own name. This line of text can be found in the `/docs/index.html` file.
 Replace `Franklin` with your own name. 
 ```html
 <h1>Hi I'm Franklin</h1>
 ```
 
-### 5. Job Title
+## 5. Job Title
 Summarize what you do in 5 lines and add it into the `<h2></h2>` line. Add the first two in the first `<h2>` element and add the remaining 4 on the next `<h2>`
 ```html
 <h2>Building digital</h2>
 <h2>products, brands, and experience.</h2>
 ```
 
-### 6. Job Description
+## 6. Job Description
 Update the job description with your information. Recommend 20 words.
 ```html
 <p>
@@ -152,7 +152,7 @@ Update the job description with your information. Recommend 20 words.
 </p>
 ```
 
-### 7. Connect With Me
+## 7. Connect With Me
 Replace the `#` on the connect with me button with a link. You can choose what link you want your visitors to go when they click this button. Social links, email adrress, phone number, it's completely up to you.
 ```html
 <a href="#" class="btn btn-secondary">Connect With Me</a>
@@ -161,9 +161,74 @@ Replace the `#` on the connect with me button with a link. You can choose what l
 OR
 - Phone: `<a href="tel:+23400000000" class="btn btn-secondary">Connect With Me</a>`
 
+## 8. Project
+This is the section to showcase your projects using screenshots. This section has 3 columns and 2 rows by default but you can add more columns according to your use case. 
+The `.project` controls the number of columns and rows of the project cards. 
+
+```html
+<div href="" class="card">
+   <div class="project-info">
+      <div class="project-bio">
+         <h3>Project One</h3>
+         <p>React, Redux, SASS</p>
+      </div>
+
+      <div class="project-link">
+         <a href="#"><i class="fab fa-github"></i></a>
+         <a href="#"><i class="fas fa-globe"></i></a>
+      </div>
+   </div>
+</div>
+```
+
+To customize the cards, here are a few things you can change:
+### Project Title
+```html
+<h3>Project One</h3>
+```
+This is controlled by the `<h3></h3>` element. Edit the text and add your preffered project name.
+
+### Project Stack
+This is where the tools/technologies used in building the project is. Edit the `<p></p>` element with the specific tools or delete the line completely.
+```html 
+<p>React, Redux, SASS</p>
+```
+### Project Link
+The project links are the icons on the top right of the project cards. One is the github link and the othe is the live link., you can paste the respective links into the empty `href` attributes. The icons are added using an icon library called <a href="fontawesome.com/">fontawesome</a> so changing this icon is super easy.
+```html
+<a href="#"><i class="fab fa-github"></i></a>
+<a href="#"><i class="fas fa-globe"></i></a>
+```
+
+## Project Styling
+The layout of the project cards is controlled by the `.project` in the `style.css` file. By using CSS `grid-template-columns`, the cards are outlined on three columns on desktop mode, two columns on tablet mode and one column on mobile view. 
+
+```css
+.project {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(250px, auto);
+  grid-gap: 0.9rem;
+}
+```
+
+## Social Links
+The footer links contain social icons that you can link to your specific social channels. By default the icons available are: `Facebook`, `Twitter`, `LinkedIn`, `GitHub`, `Hashnode` and the icons image are added locally to the assets folder, so you can add your own custom icon and link it. 
+
+```html
+<a href="mailto:communitypro47@gmail.com">communitypro47@gmail.com</a>
+ <div class="social">
+    <a href="#"><img src="./assets/facebook-icon.svg" alt="Facebook"></a>
+    <a href="#"><img src="./assets/twitter-icon.svg" alt="Twitter"></a>
+    <a href="#"><img src="./assets/linkedin-icon.svg" alt="Linkedin"></a>
+    <a href="#"><img src="./assets/github-icon.svg" alt="GitHub"></a>
+    <a href="#"><img src="./assets/hashnode-icon.svg" alt="Hashnode"></a>
+ </div>
+```
+
 ## Styling
-We are using plain `CSS` for this project and you can find that in the `template/css/` folder
-- Style.css is the main file
+We are using plain `CSS` for this project and you can find that in the `docs/css/` folder
+- style.css is the main file
 - utilities.css is where reusable styling will be. 
 
 ## Sponsor
