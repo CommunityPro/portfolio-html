@@ -73,18 +73,22 @@ body {
 }
 
 /* Navbar */
-.navbar .container {
+.navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  z-index: 20;
+  background: var(--bg-primary);
+}
+
+.navbar .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   z-index: 20;
   height: 80px;
   width: 100%;
-  background: var(--bg-primary);
 }
 
 .navbar .nav-menu {
