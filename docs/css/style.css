@@ -159,7 +159,7 @@ body {
 
 #projects .btn {
   align-self: center;
-  margin: 2rem;
+  margin: 2rem 0;
 }
 
 .project {
@@ -244,6 +244,9 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+}
+
 @media (max-width: 670px) {
   .navbar .nav-menu {
     position: fixed;
@@ -305,6 +308,7 @@ body {
     transform: translateY(-8px) rotate(-45deg);
   }
 }
+
 @media (max-width: 600px) {
   .project {
     display: grid;
