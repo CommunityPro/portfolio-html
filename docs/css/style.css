@@ -128,14 +128,18 @@ body {
 #hero {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 60vh;
 }
 
 .profile-image {
   width: 150px;
   border-radius: 50%;
 }
-
+.division{
+  border: 3px solid var(--card-background);
+  background-color: var(--card-background);
+  margin: 5.5rem 0;
+}
 /* Projects */
 .project-container {
   margin: 1.5rem 0;
@@ -245,7 +249,6 @@ body {
     transform: translateY(-8px) rotate(-45deg);
   }
 }
-
 @media (max-width: 600px) {
   .project {
     display: grid;
