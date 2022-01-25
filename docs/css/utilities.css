@@ -60,12 +60,16 @@ h2::selection {
   width: 30px;
 }
 
-#switch:checked + .toggle-icons .sun {
-  transform: rotate(100deg);
+.moon {
+  transform: rotate(10deg);
 }
 
 #switch:checked + .toggle-icons .moon {
   transform: rotate(250deg);
+}
+
+#switch:checked + .toggle-icons .sun {
+  transform: rotate(100deg);
 }
 
 /* Header Container */
