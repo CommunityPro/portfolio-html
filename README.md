@@ -28,7 +28,7 @@
 </a>
 </p>
 
-<p align="center">Build your portfolio using this super easy template. Free to use if you are a member of the community or a contributor to this project. if not, read our <a href="https://github.com/CommunityPro/portfolio-html/blob/main/REQUIREMENTS.md">requirements</a> if you plan on using this template for your portfolio.</p>
+<p align="center">Build your portfolio using this super easy template. Free to use if you are a member of the community or a contributor to this project. If not, read our <a href="https://github.com/CommunityPro/portfolio-html/blob/main/REQUIREMENTS.md">requirements</a> if you plan on using this template for your portfolio.</p>
 
 <p align="center">This project is made from the tireless efforts of the community, so feel free to <a href= "https://www.buymeacoffee.com/evavic44">support</a> our work by contributing, staring ✨ the project or <a href="https://camo.githubusercontent.com/37a7cffb8b4d73c06dbfea643b9e783b144ed5383815c08bcffc9d40a1bee61c/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f73706f6e736f722d3330333633443f7374796c653d666f722d7468652d6261646765266c6f676f3d4769744875622d53706f6e736f7273266c6f676f436f6c6f723d237768697465">sponsoring</a> us. 🙏🏽</p>
 
@@ -52,7 +52,7 @@
 
 ## How to Contribute
 
-Are you contributing to this project, please ensure all pull requests and contributions comply with our <a href="https://github.com/CommunityPro/portfolio-html/blob/main/CONTRIBUTING.md">guidelines</a>
+Are you contributing to this project, please ensure all pull requests and contributions comply with our <a href="https://github.com/CommunityPro/portfolio-html/blob/main/CONTRIBUTING.md">guidelines.</a>
 
 Before making any changes, ensure you have raised an issue <a href="https://github.com/CommunityPro/portfolio-html/issues/new/choose">here</a>, unless it is a minimal change like Typo error then you can go right ahead.
 
@@ -118,8 +118,8 @@ The logo of this template is controlled by this line in the `index.html` markup,
    </li>     
 </ul>
 ```
-Replace the `#` symbol with your respective link. Delete any `nav-link` that is not being used or edit the name with your own preffered link source.
-- The Last navigation link is the highlightd yellow button on the template. Which is styled with the `btn` & `btn-primary` classes.
+Replace the `#` symbol with your respective link. Delete any `nav-link` that is not being used or edit the name with your own preferred link source.
+- The last navigation link is the highlighted yellow button on the template. Which is styled with the `btn` & `btn-primary` classes.
 
 ## 3. Profile Image
 Replace the icon or user profile with your profile image. Image can be found in the `/assets/profile-image.png`.
@@ -137,23 +137,23 @@ Replace `Franklin` with your own name.
 ```
 
 ## 5. Job Title
-Summarize what you do in 5 lines and add it into the `<h2></h2>` line. Add the first two in the first `<h2>` element and add the remaining 4 on the next `<h2>`
+Summarize what you do in five words and add it into the `<h2></h2>` line. Add the first two in the first `<h2>` element and add the remaining four on the next `<h2>`
 ```html
 <h2>Building digital</h2>
 <h2>products, brands, and experience.</h2>
 ```
 
 ## 6. Job Description
-Update the job description with your information. Recommend 20 words.
+Update the job description with your information. 20 words recommended.
 ```html
 <p>
-  A Frontend Developer and Visual Design with experience in web
+  A Frontend Developer and Visual Designer with experience in web
   design, brand identity and product design.
 </p>
 ```
 
 ## 7. Connect With Me
-Replace the `#` on the connect with me button with a link. You can choose what link you want your visitors to go when they click this button. Social links, email adrress, phone number, it's completely up to you.
+Replace the `#` on the connect with me button with a link. You can choose what link you want your visitors to go when they click this button. Social links, email address or phone number, it's completely up to you.
 ```html
 <a href="#" class="btn btn-secondary">Connect With Me</a>
 ```
@@ -162,7 +162,7 @@ OR
 - Phone: `<a href="tel:+23400000000" class="btn btn-secondary">Connect With Me</a>`
 
 ## 8. Project
-This is the section to showcase your projects using screenshots. This section has 3 columns and 2 rows by default but you can add more columns according to your use case. 
+This section showcases your projects using screenshots. It has 3 columns and 2 rows by default but you can add more columns according to your use case. 
 The `.project` controls the number of columns and rows of the project cards. 
 
 ```html
@@ -186,15 +186,15 @@ To customize the cards, here are a few things you can change:
 ```html
 <h3>Project One</h3>
 ```
-This is controlled by the `<h3></h3>` element. Edit the text and add your preffered project name.
+This is controlled by the `<h3></h3>` element. Edit the text and add your preferred project name.
 
 ### Project Stack
-This is where the tools/technologies used in building the project is. Edit the `<p></p>` element with the specific tools or delete the line completely.
+This is where you display the tools/technologies used in building the project. Edit the `<p></p>` element with the specific tools or delete the line completely.
 ```html 
 <p>React, Redux, SASS</p>
 ```
 ### Project Link
-The project links are the icons on the top right of the project cards. One is the github link and the othe is the live link., you can paste the respective links into the empty `href` attributes. The icons are added using an icon library called <a href="fontawesome.com/">fontawesome</a> so changing this icon is super easy.
+The project links are the icons on the top right of the project cards. One is the github link and the othe is the live link. You can paste the respective links into the empty `href` attributes. The icons are added using an icon library called <a href="fontawesome.com/">fontawesome</a> so changing this icon is super easy.
 ```html
 <a href="#"><i class="fab fa-github"></i></a>
 <a href="#"><i class="fas fa-globe"></i></a>
