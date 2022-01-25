@@ -1,6 +1,6 @@
 <div align="center"><h1>Requirements 🙌🏾✨</h1></div> 
 
-Hello, 🤩👋🏾 Thank you for downloading or using this template, we hope you like it. Please link back to us if you have used this template, we would love to see how you used or customized your portfolio. 😇
+Hello, 🤩👋🏾 Thank you for downloading or using this template, we hope you like it. Please link back to us if you have used this template by adding your portfolio to the list in the README <a href="https://github.com/CommunityPro/portfolio-html#examples">here</a>, we would love to see how you used or customized your portfolio. 😇
 
 These are not requirements per se, see them as giving back to the efforts of the community and the members who built this project.
 
