@@ -94,6 +94,7 @@ Before making any changes, ensure you have raised an issue <a href="https://gith
 <div align="center">
     <h1>✨ How to Customize this Template ✨</h1>
 </div>
+This portfolio uses modern HTML5 semantic tags like <article>, <header>, <footer> and more for better accessibility and improve SEO, you can read more about that on Jemima's article: <a href="https://blog.jemimaabu.com/how-to-improve-your-seo-ranking">How to improve your SEO ranking</a>.  
 
 The root page of this project is located at `/docs/index.html` This is the default page you see when you visit the site.
 Want to customize this template to suit your style, here are a few things you can change: 
@@ -225,6 +226,9 @@ The footer links contain social icons that you can link to your specific social 
     <a href="#"><img src="./assets/hashnode-icon.svg" alt="Hashnode"></a>
  </div>
 ```
+
+## META Tags
+Use <a href="https://metatags.io/">Metatags.io</a> to generate meta tags for sharing your portfolio and for SEO benefits.  
 
 ## Styling
 We are using plain `CSS` for this project and you can find that in the `docs/css/` folder
