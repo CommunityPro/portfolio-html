@@ -29,13 +29,13 @@ h2::selection {
 
 .btn-primary {
   background: var(--primary-color);
-  color: #000000;
+  color: #fffafa;
 }
 
 .btn-secondary {
   margin: 5px 0;
-  background-color: var(--bg-secondary);
-  color: var(--bg-primary);
+  background-color: #004aad;
+  color: #dfdbdb;
 }
 
 /* add hover to resume button */

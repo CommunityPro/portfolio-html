@@ -9,8 +9,8 @@
 /* variables */
 :root {
   /* Colors */
-  --primary-color: #ffcd42;
-  --secondary-color: #ffd35c;
+  --primary-color: #004aad;
+  --secondary-color: #0859c4;
   --bg-primary: #ffffff;
   --text-color: #222222;
   --text-color-two: #ffffff;
@@ -32,8 +32,8 @@
 }
 
 [data-theme="dark"] {
-  --primary-color: #ffcd42;
-  --secondary-color: #ffd35c;
+  --primary-color: #004aad;
+  --secondary-color: #0859c4;
   --bg-primary: #000000;
   --text-color: #ffffff;
   --text-color-two: #222222;
@@ -94,7 +94,6 @@ body {
 .navbar .nav-menu {
   display: flex;
   align-items: center;
-  background: var(--bg-primary);
 }
 
 .navbar .nav-link {
@@ -105,11 +104,12 @@ body {
 
 .navbar #logo img {
   display: block;
-  width: 40px;
+  width: 100px;
 }
 
 .navbar .btn {
   margin-right: 1.5rem;
+  color: white;
 }
 
 .fas.fa-arrow-right {
