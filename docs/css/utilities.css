@@ -43,7 +43,7 @@ h2::selection {
   background: var(--secondary-color);
 }
 
-/* Dark mode toggle */
+/* Dark mode toggler */
 #switch {
   display: none;
 }
