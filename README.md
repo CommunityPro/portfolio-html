@@ -41,7 +41,7 @@
 
 <hr>
 
-<a href="https://www.figma.com/file/JBMQYdJFFvahy3PxTxygpw/Portfolio-Template---Communitypro?node-id=0%3A1"><img src="https://user-images.githubusercontent.com/62628408/150613011-b78a7f5a-0af1-4312-aab0-0022e7258693.png" width="100%"></a>
+<a href="/"><img src="https://user-images.githubusercontent.com/62628408/150613011-b78a7f5a-0af1-4312-aab0-0022e7258693.png" width="100%"></a>
 <a href="https://gitpod.io/https:/CommunityPro/portfolio-html"><img src="https://gitpod.io/button/open-in-gitpod.svg"></a>
 
 ## Design credit: 
@@ -59,7 +59,7 @@ Before making any changes, ensure you have raised an issue <a href="https://gith
 ## Folder Structure
 
 ```bash
-├── docs
+├── src
 │   ├── index.html
 │   ├── css
 │   │   ├── style.css
