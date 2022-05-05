@@ -144,19 +144,17 @@ body {
   width: 150px;
   border-radius: 50%;
   animation: bounce 1s infinite alternate;
-  
 }
 
 @keyframes bounce {
-    from {
-      transform: translateY(0px);
-    }
+  from {
+    transform: translateY(0px);
+  }
 
-    to {
-      transform: translateY(-10px);
-    }
+  to {
+    transform: translateY(-10px);
+  }
 }
-
 
 .division {
   width: 100%;
@@ -327,5 +325,10 @@ body {
   .project {
     display: grid;
     grid-template-columns: 1fr;
+  }
+
+  .header-container .btn {
+    border-radius: 5px;
+    width: 80%;
   }
 }
