@@ -58,3 +58,10 @@ if (currentTheme) {
     toggleSwitch.checked = true;
   }
 }
+
+//Adding date
+
+let myDate = document.querySelector("#datee");
+
+const yes = new Date().getFullYear();
+myDate.innerHTML = yes;
