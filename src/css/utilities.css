@@ -168,6 +168,7 @@ h2::selection {
 @media (max-width: 768px) {
   .header-container {
     margin-top: 7rem;
+    text-align: center;
   }
 
   .content-text h2 {
