@@ -94,7 +94,7 @@ Before making any changes, ensure you have raised an issue <a href="https://gith
 <div align="center">
     <h1>✨ How to Customize this Template ✨</h1>
 </div>
-This portfolio uses modern HTML5 semantic tags like <article>, <header>, <footer> and more for better accessibility and improve SEO, you can read more about that on Jemima's article: <a href="https://blog.jemimaabu.com/how-to-improve-your-seo-ranking">How to improve your SEO ranking</a>.  
+This portfolio uses modern HTML5 semantic tags like article, header, footer and more for better accessibility and improve SEO, you can read more about that on Jemima's article: <a href="https://blog.jemimaabu.com/how-to-improve-your-seo-ranking">How to improve your SEO ranking</a>.  
 Also learn about metatags and how to generate them for SEO optimization <a href="https://github.com/CommunityPro/portfolio-html/blob/main//Metatags.md">here</a>.
 
 The root page of this project is located at `/docs/index.html` This is the default page you see when you visit the site.
