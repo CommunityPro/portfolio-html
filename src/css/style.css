@@ -332,3 +332,31 @@ body {
     width: 80%;
   }
 }
+
+@keyframes glowing {
+  0% {
+      box-shadow: 0 0 25px #00ff00;
+  }
+  50% {
+      box-shadow: 0 0 40px #00ff00;
+  }
+  100% {
+      box-shadow: 0 0 25px #00ff00;
+  }
+}
+
+.glowing-effect {
+  animation: glowing 2s infinite;
+}
+.glow {
+  font-size: 50px;
+  color: black;
+  text-align: center;
+  text-shadow: 0 0 10px #00ff00, 0 0 10px #00ff00, 0 0 10px #00ff00, 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 20px #00ff00, 0 0 20px #00ff00;
+}
+.glow_black {
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 0 10px black, 0 0 10px black, 0 0 10px black, 0 0 10px black, 0 0 20px black, 0 0 20px black, 0 0 20px black;
+}
