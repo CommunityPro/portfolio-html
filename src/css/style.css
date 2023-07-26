@@ -46,6 +46,8 @@
 html {
   font-size: 100%;
   scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+  /* for removing the highlight */
 }
 
 /* Reset default styling */
@@ -162,6 +164,7 @@ body {
   background-color: var(--card-background);
   margin: 5.5rem 0;
 }
+
 /* Projects */
 #projects {
   display: flex;
@@ -256,8 +259,7 @@ body {
   }
 }
 
-@media (max-width: 768px) {
-}
+@media (max-width: 768px) {}
 
 @media (max-width: 670px) {
   .navbar .nav-menu {
