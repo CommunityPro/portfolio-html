@@ -129,7 +129,7 @@ Replace the icon or user profile with your profile image. Image can be found in 
 <img class="profile-image" src="./assets/profile-image.png" alt="" />
 ```
 You can add the image locally by replacing it with the `/assets/profile-image.png`.
-Or replace the `src` link in the HTML file with your preferred image. I recommmend you copy your GitHub profile image link, so the image changes anytime you update it on GitHub.
+Or replace the `src` link in the HTML file with your preferred image. I recommend you copy your GitHub profile image link, so the image changes anytime you update it on GitHub.
 
 ## 4. Name
 Edit the name on the welcome message with your own name. This line of text can be found in the `/docs/index.html` file.
@@ -196,7 +196,7 @@ This is where you display the tools/technologies used in building the project. E
 <p>React, Redux, SASS</p>
 ```
 ### Project Link
-The project links are the icons on the top right of the project cards. One is the github link and the othe is the live link. You can paste the respective links into the empty `href` attributes. The icons are added using an icon library called <a href="fontawesome.com/">fontawesome</a> so changing this icon is super easy.
+The project links are the icons on the top right of the project cards. One is the github link and the other is the live link. You can paste the respective links into the empty `href` attributes. The icons are added using an icon library called <a href="fontawesome.com/">fontawesome</a> so changing this icon is super easy.
 ```html
 <a href="#"><i class="fab fa-github"></i></a>
 <a href="#"><i class="fas fa-globe"></i></a>
@@ -263,7 +263,7 @@ We are using plain `CSS` for this project and you can find that in the `docs/css
 
 ## Sponsor
 <div>
-  <a href="https://www.buymeacoffee.com/evavic44">
+  <a href="https://www.buymeacoffee.com/victoreke">
     <img width="150px" alt="bmc-button" src="https://user-images.githubusercontent.com/62628408/127788747-8850d386-fc61-4fff-b18f-8c5ee597be34.png">
   </a>
 <img width="150px" height="100%" src="https://img.shields.io/badge/sponsor-30363D?style=for-the-badge&logo=GitHub-Sponsors&logoColor=#white">
