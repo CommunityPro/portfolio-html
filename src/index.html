@@ -99,6 +99,34 @@
     </section>
   </header>
 
+  <!--Skills-->
+
+  <section id="skills">
+    <div class="division"></div>
+    <div class="content-text">
+      <h2>Skills</h2>
+      <p>Check out my skills</p>
+    </div>
+    <div class="skills">
+      <marquee Scrollamount=10 class="skillsMarquee" onmouseover="stopMarquee()" onmouseout="startMarquee()">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/180px-HTML5_logo_and_wordmark.svg.png">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/180px-CSS3_logo_and_wordmark.svg.png">
+        <img src="https://www.javascripttutorial.net/wp-content/uploads/2021/04/JavaScript-Tutorial.svg">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/180px-Node.js_logo.svg.png">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/180px-React-icon.svg.png">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/C_Programming_Language.svg/570px-C_Programming_Language.svg.png?20201031132917">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/en/thumb/3/30/Java_programming_language_logo.svg/182px-Java_programming_language_logo.svg.png">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/182px-Python-logo-notext.svg.png">
+      </marquee>
+    </div>
+  </section>
+
 
   <!-- Projects -->
   <section id="projects" class="project-container container">
@@ -239,7 +267,7 @@
     }
 
     function downloadResume() {
-      const url = './dummy_resume.pdf'; // Replace with the actual path to your PDF file
+      const url = '/dummy resume.pdf'; // Replace with the actual path to your PDF file
       const fileName = 'your_resume.pdf'; // Replace with the desired file name
 
       fetch(url)
