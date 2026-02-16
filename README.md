@@ -7,7 +7,14 @@
 * **Git** installed on your machine.
 * A text editor (recommended: [VS Code](https://code.visualstudio.com/)).
 
-Portfolio template: https://github.com/Evavic44/portfolio-ideas?tab=readme-ov-file
+Portfolio template(_You can use one of these templates to create your portfolio_): 
+    - https://github.com/topics/portfolio-template?l=css
+    - https://iluskaland.github.io/portfolio-template/index.html
+    - https://github.com/bedimcode/responsive-portfolio-website-patrick
+    - https://github.com/roycenoel/portfolio
+    - https://github.com/hhlitval/simple-portfolio-template
+    - https://github.com/hhlitval/simple-portfolio-template
+
 
 Portfolio model: https://cpro-portfolio-html.netlify.app/#projects
 
@@ -105,5 +112,5 @@ Your portfolio is now visible at:
 
 
 
-<a href="/"><img src="https://user-images.githubusercontent.com/62628408/150613011-b78a7f5a-0af1-4312-aab0-0022e7258693.png" width="100%"></a>
+<a href="/"><img src="./src/assets/Homepage.png" width="100%"></a>
 
