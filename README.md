@@ -8,12 +8,13 @@
 * A text editor (recommended: [VS Code](https://code.visualstudio.com/)).
 
 Portfolio template(_You can use one of these templates to create your portfolio_): 
-    - https://github.com/topics/portfolio-template?l=css
-    - https://iluskaland.github.io/portfolio-template/index.html
-    - https://github.com/bedimcode/responsive-portfolio-website-patrick
-    - https://github.com/roycenoel/portfolio
-    - https://github.com/hhlitval/simple-portfolio-template
-    - https://github.com/hhlitval/simple-portfolio-template
+
+  * https://github.com/topics/portfolio-template?l=css
+  * https://iluskaland.github.io/portfolio-template/index.html
+  * https://github.com/bedimcode/responsive-portfolio-website-patrick
+  * https://github.com/roycenoel/portfolio
+  * https://github.com/hhlitval/simple-portfolio-template
+  * https://github.com/hhlitval/simple-portfolio-template
 
 
 Portfolio model: https://cpro-portfolio-html.netlify.app/#projects
