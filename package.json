@@ -1,0 +1,30 @@
+{
+  "name": "git",
+  "version": "1.0.0",
+  "description": "<p align=\"center\"> <img src=\"https://user-images.githubusercontent.com/62628408/149734737-cd534c5b-03d9-4ad3-af77-70d6784d98cc.png\" align=\"center\" width=\"50%\"> </p>",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "jest-environment-jsdom",
+    "testMatch": ["**/tests/**/*.test.js"],
+    "setupFiles": ["./tests/setup.js"]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hannopo1/portfolio-html.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/hannopo1/portfolio-html/issues"
+  },
+  "homepage": "https://github.com/hannopo1/portfolio-html#readme",
+  "devDependencies": {
+    "jest": "^30.4.2",
+    "jest-environment-jsdom": "^30.4.1"
+  }
+}
