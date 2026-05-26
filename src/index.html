@@ -4187,5 +4187,145 @@ html.light .brand-mark{background:linear-gradient(160deg,#e9edf6,#dde6f5) !impor
 @media(max-width:560px){.hero-portrait.editorial{width:clamp(210px,64vw,280px)}}
 
 </style>
+
+<style id="motion-surface-enh">
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SUPREME MASTER PROMPT — FEATURE 3 & 4 SURGICAL ENHANCEMENT
+   Feature 3: cubic-bezier(.22,1,.36,1) · 420ms · 15% threshold · data-reveal variants
+   Feature 4: bottom accent glow · layered chart-card surface · deeper KPI halo
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── FEATURE 3: Upgraded reveal timing (wins by source order + specificity) ── */
+.reveal{
+  transition:
+    opacity 420ms cubic-bezier(.22,1,.36,1),
+    transform 420ms cubic-bezier(.22,1,.36,1) !important;
+}
+/* data-reveal directional variants — applied by JS, cleared on .visible */
+[data-reveal="up"]   {transform:translateY(36px);opacity:0}
+[data-reveal="down"] {transform:translateY(-28px);opacity:0}
+[data-reveal="left"] {transform:translateX(-42px);opacity:0}
+[data-reveal="right"]{transform:translateX(42px);opacity:0}
+[data-reveal="scale"]{transform:scale(.92);opacity:0}
+[data-reveal].visible{transform:none !important;opacity:1 !important}
+[data-reveal]{transition:opacity 420ms cubic-bezier(.22,1,.36,1),transform 420ms cubic-bezier(.22,1,.36,1)}
+
+/* ── FEATURE 4: Bottom gradient accent on KPI cards ─────────────────── */
+.kpi-bottom-accent{
+  position:absolute;bottom:0;left:10%;right:10%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--mint,#5dd6a3) 35%,var(--blue,#56b4ff) 65%,transparent);
+  opacity:.45;border-radius:0 0 20px 20px;pointer-events:none;z-index:1;
+  transition:opacity .35s ease;
+}
+.kpi:hover .kpi-bottom-accent{opacity:.85}
+
+/* Deeper ambient halo on KPI hover */
+.kpi:hover{
+  box-shadow:
+    0 40px 100px -24px rgba(86,180,255,.45),
+    0 0 60px -16px rgba(93,214,163,.20),
+    0 1px 0 rgba(255,255,255,.12) inset,
+    0 0 0 1px rgba(160,190,255,.20) inset !important;
+}
+
+/* Layered gradient surface for chart cards */
+.chart-card{
+  background:
+    radial-gradient(ellipse 90% 55% at 0% 0%,rgba(86,180,255,.055),transparent 52%),
+    radial-gradient(ellipse 65% 75% at 100% 100%,rgba(167,139,250,.055),transparent 52%),
+    linear-gradient(160deg,rgba(22,30,62,.56),rgba(10,16,38,.66)) !important;
+}
+.chart-card:hover::before{opacity:1}
+
+/* ── LIGHT MODE OVERRIDES ────────────────────────────────────────────── */
+html.light .kpi:hover{
+  box-shadow:
+    0 28px 64px -18px rgba(37,99,235,.28),
+    0 1px 0 rgba(255,255,255,.85) inset !important;
+}
+html.light .chart-card{
+  background:rgba(255,255,255,.88) !important;
+}
+html.light .kpi-bottom-accent{
+  background:linear-gradient(90deg,transparent,rgba(14,159,110,.5) 35%,rgba(37,99,235,.5) 65%,transparent);
+}
+
+/* ── MOTION SAFETY ────────────────────────────────────────────────────── */
+@media(prefers-reduced-motion:reduce){
+  .reveal,[data-reveal]{transition:none !important;transform:none !important;opacity:1 !important}
+  .kpi-bottom-accent,.chart-card{transition:none !important}
+}
+@media print{
+  [data-reveal]{transform:none !important;opacity:1 !important}
+  .kpi-bottom-accent{display:none}
+}
+</style>
+
+<script id="motion-surface-script">
+(function(){
+  "use strict";
+  var motionOK = !window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var EASE = 'cubic-bezier(.22,1,.36,1)';
+  var STAGGER = 60; /* ms per sibling index */
+
+  /* ── data-reveal observer (15% threshold, 60ms auto-stagger) ── */
+  var revealObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (!entry.isIntersecting) return;
+      var el = entry.target;
+      if (motionOK){
+        var siblings = el.parentElement
+          ? Array.from(el.parentElement.children).filter(function(c){ return c.hasAttribute('data-reveal'); })
+          : [];
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx > 0 ? idx * STAGGER : 0) + 'ms';
+      }
+      requestAnimationFrame(function(){ el.classList.add('visible'); });
+      revealObs.unobserve(el);
+    });
+  }, { root: null, rootMargin: '0px 0px -50px 0px', threshold: 0.15 });
+
+  /* ── .reveal sibling auto-stagger (upgrades existing observer) ── */
+  var staggerObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (!entry.isIntersecting) return;
+      var el = entry.target;
+      if (motionOK && !el.style.transitionDelay){
+        var siblings = el.parentElement
+          ? Array.from(el.parentElement.children).filter(function(c){ return c.classList.contains('reveal'); })
+          : [];
+        var idx = siblings.indexOf(el);
+        if (idx > 0) el.style.transitionDelay = (idx * STAGGER) + 'ms';
+      }
+      /* let existing observer add .visible — avoid race by checking */
+      staggerObs.unobserve(el);
+    });
+  }, { root: null, rootMargin: '0px 0px -50px 0px', threshold: 0.15 });
+
+  function init(){
+    /* Register data-reveal elements */
+    document.querySelectorAll('[data-reveal]').forEach(function(el){
+      if (!motionOK){ el.classList.add('visible'); return; }
+      revealObs.observe(el);
+    });
+    /* Enhance stagger on .reveal siblings */
+    document.querySelectorAll('.reveal').forEach(function(el){
+      if (motionOK) staggerObs.observe(el);
+    });
+    /* Inject bottom accent bars into all KPI cards */
+    document.querySelectorAll('.kpi').forEach(function(kpi){
+      if (!kpi.querySelector('.kpi-bottom-accent')){
+        var bar = document.createElement('div');
+        bar.className = 'kpi-bottom-accent';
+        bar.setAttribute('aria-hidden', 'true');
+        kpi.appendChild(bar);
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
 </body>
 </html>
