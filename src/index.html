@@ -2230,6 +2230,85 @@ body.splash-lock{overflow:hidden}
   .cover-video-bg{display:none}
 }
 </style>
+<style id="md-styles">
+/* ══════════════════════════════════════════════════════════════════════
+   MASTER–DETAIL · القائمة الرئيسية → صفحة التفاصيل (Expandable ListView)
+   اضغط على العنوان (‹) لفتح صفحة تفاصيل كاملة بها زر رجوع. انزلاق من الجانب.
+   مُطبّق على الأقسام 3 → 16 · مُستثنى: Cover + Summary + Branding يبقون كاملين.
+   Gated on .dl-ready (no-JS = full content) · RTL · a11y · History · print-safe
+   ══════════════════════════════════════════════════════════════════════ */
+html.dl-ready .dl-panel{display:none}
+
+/* Main list: compact tappable rows (except cover/summary/branding) */
+html.dl-ready section.section:not(#cover):not(#summary):not(#branding){
+  min-height:auto !important;justify-content:flex-start;
+  padding:clamp(22px,3.4vw,34px) clamp(20px,5vw,72px) !important;cursor:pointer;
+  transition:filter .3s var(--ease),background .3s var(--ease);
+}
+html.dl-ready section.section:not(#cover):not(#summary):not(#branding) .sec-num{display:none}
+html.dl-ready section.section:not(#cover):not(#summary):not(#branding) > .eyebrow{margin-bottom:7px}
+html.dl-ready section.section:not(#cover):not(#summary):not(#branding) h2{margin:0;font-size:clamp(1.35rem,4vw,2.1rem)}
+@media(hover:hover){html.dl-ready section.section:not(#cover):not(#summary):not(#branding):hover{filter:brightness(1.12)}}
+
+/* Title trigger + affordance chevron ‹ */
+.dl-trigger{display:flex;align-items:center;gap:.7em;width:100%;font:inherit;color:inherit;
+  background:none;border:none;padding:0;margin:0;text-align:start;cursor:pointer}
+.dl-trigger .dl-label{flex:1 1 auto;min-width:0}
+.dl-trigger .dl-go{flex:0 0 auto;margin-inline-start:.4em;width:36px;height:36px;border-radius:50%;
+  display:grid;place-items:center;color:var(--blue);background:rgba(86,180,255,.10);
+  border:1px solid var(--line-soft);transition:transform .35s var(--ease),background .3s var(--ease),color .3s var(--ease)}
+.dl-trigger .dl-go svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+@media(hover:hover){.dl-trigger:hover .dl-go{background:rgba(86,180,255,.22);color:var(--blue-2);transform:translateX(3px)}}
+html[lang="ar"] .dl-trigger:hover .dl-go,[dir="rtl"] .dl-trigger:hover .dl-go{transform:translateX(-3px)}
+.dl-trigger:active .dl-go{transform:scale(.94)}
+.dl-trigger:focus-visible{outline:none}
+.dl-trigger:focus-visible .dl-go{outline:2px solid var(--blue);outline-offset:3px}
+.eyebrow.dl-clickable{cursor:pointer}
+
+/* Detail view (full-screen page) · slide in from the side */
+.dv{position:fixed;inset:0;z-index:1200;display:flex;flex-direction:column;
+  background:
+    radial-gradient(1100px 560px at 80% -8%,rgba(86,180,255,.12),transparent 60%),
+    radial-gradient(900px 520px at 5% 12%,rgba(167,139,250,.10),transparent 60%),
+    linear-gradient(180deg,#05070f 0%,#070b1c 50%,#05070f 100%);
+  visibility:hidden;transform:translateX(100%);
+  transition:transform .42s var(--ease),visibility 0s linear .42s}
+.dv.open{visibility:visible;transform:translateX(0);transition:transform .42s var(--ease)}
+/* RTL: slide in from the left. .dv.open scoped higher so it settles at 0 */
+html[lang="ar"] .dv,[dir="rtl"] .dv{transform:translateX(-100%)}
+html[lang="ar"] .dv.open,[dir="rtl"] .dv.open{transform:translateX(0)}
+.dv-bar{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:14px;
+  padding:14px clamp(16px,4vw,40px);backdrop-filter:blur(20px) saturate(140%);
+  -webkit-backdrop-filter:blur(20px) saturate(140%);
+  background:rgba(8,12,28,.74);border-bottom:1px solid var(--line-soft)}
+.dv-back{display:inline-flex;align-items:center;gap:.5em;cursor:pointer;flex:0 0 auto;
+  background:rgba(86,180,255,.12);border:1px solid var(--line-soft);color:var(--ink);
+  border-radius:999px;padding:9px 16px 9px 13px;font:inherit;font-weight:600;font-size:14px;
+  transition:background .25s var(--ease),transform .2s var(--ease)}
+.dv-back svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+@media(hover:hover){.dv-back:hover{background:rgba(86,180,255,.22)}}
+.dv-back:active{transform:scale(.96)}
+html[lang="ar"] .dv-back svg,[dir="rtl"] .dv-back svg{transform:scaleX(-1)}
+.dv-title{font-family:var(--display,inherit);font-weight:700;color:var(--ink);min-width:0;
+  font-size:clamp(1rem,3.4vw,1.3rem);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dv-body{flex:1 1 auto;overflow-y:auto;-webkit-overflow-scrolling:touch;width:100%;
+  padding:clamp(22px,4vw,52px);max-width:1140px;margin:0 auto}
+body.dl-lock{overflow:hidden}
+body.dl-lock .scroll-progress{opacity:0}
+
+@media (prefers-reduced-motion:reduce){
+  .dv,.dv.open,.dl-trigger .dl-go,.dv-back,
+  html.dl-ready section.section:not(#cover):not(#summary):not(#branding){transition:none}
+  .dv{transform:none}
+}
+@media print{
+  html.dl-ready .dl-panel{display:block !important}
+  html.dl-ready section.section:not(#cover):not(#summary):not(#branding){min-height:auto !important;padding:24px 0 !important}
+  html.dl-ready section.section:not(#cover):not(#summary):not(#branding) .sec-num{display:block}
+  .dl-trigger .dl-go{display:none !important}
+  .dv{display:none !important}
+}
+</style>
 </head>
 <body>
 <!-- ══ CINEMATIC SPLASH SCREEN ══ -->
@@ -4565,6 +4644,104 @@ html.light .kpi-bottom-accent{
       e.preventDefault(); dismiss();
     }
   },{once:true});
+})();
+</script>
+<script id="md-script">
+(function(){
+  "use strict";
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  /* مُستثنى من الطيّ: الغلاف + الملخّص + الخاتمة → يبقى التطبيق على الأقسام 3 حتى 16 */
+  var SKIP={cover:1,summary:1,branding:1};
+  var recs={}, current=null, dv, dvTitle, dvBody, dvBack;
+
+  function buildOverlay(){
+    dv=document.createElement('div'); dv.className='dv'; dv.id='detail-view';
+    dv.setAttribute('role','dialog'); dv.setAttribute('aria-modal','true'); dv.setAttribute('aria-labelledby','dv-title');
+    var bar=document.createElement('div'); bar.className='dv-bar';
+    dvBack=document.createElement('button'); dvBack.type='button'; dvBack.className='dv-back';
+    dvBack.setAttribute('aria-label','Back to list · العودة للقائمة');
+    dvBack.innerHTML='<svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg><span>Back · رجوع</span>';
+    dvBack.addEventListener('click', function(){ history.back(); });
+    dvTitle=document.createElement('span'); dvTitle.className='dv-title'; dvTitle.id='dv-title';
+    bar.appendChild(dvBack); bar.appendChild(dvTitle);
+    dvBody=document.createElement('div'); dvBody.className='dv-body'; dvBody.id='dv-body';
+    dv.appendChild(bar); dv.appendChild(dvBody); document.body.appendChild(dv);
+  }
+  function resizeCharts(scope){
+    if(window.Chart&&Chart.getChart){scope.querySelectorAll('canvas').forEach(function(cv){
+      var c=Chart.getChart(cv); if(c){try{c.resize();}catch(e){}}});}
+  }
+  function moveBack(id){ var r=recs[id]; if(r) r.panel.appendChild(r.inner); }
+  function open(id, push){
+    var r=recs[id]; if(!r||current===id) return;
+    if(current){ moveBack(current); current=null; }
+    current=id;
+    dvTitle.textContent=r.title;
+    dvBody.appendChild(r.inner);
+    r.inner.querySelectorAll('.reveal').forEach(function(x){x.classList.add('visible');});
+    document.body.classList.add('dl-lock');
+    dv.classList.add('open'); dvBody.scrollTop=0;
+    if(push!==false) history.pushState({dv:id}, '', '#'+id);
+    setTimeout(function(){ try{dvBack.focus({preventScroll:true});}catch(e){dvBack.focus();} }, reduce?0:60);
+    setTimeout(function(){ resizeCharts(dvBody); window.dispatchEvent(new Event('resize')); }, reduce?0:420);
+    document.addEventListener('keydown', onKey);
+  }
+  function close(){
+    if(!current) return;
+    var id=current, trig=recs[id].trigger;
+    dv.classList.remove('open'); document.body.classList.remove('dl-lock');
+    document.removeEventListener('keydown', onKey);
+    var done=function(){ moveBack(id); current=null;
+      if(trig){ try{trig.focus({preventScroll:true});}catch(e){trig.focus();} } };
+    if(reduce) done(); else setTimeout(done, 410);
+  }
+  function onKey(e){
+    if(e.key==='Escape'){ e.preventDefault(); history.back(); return; }
+    if(e.key!=='Tab') return;
+    var f=dv.querySelectorAll('a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])');
+    if(!f.length) return; var a=f[0], z=f[f.length-1];
+    if(e.shiftKey && document.activeElement===a){ e.preventDefault(); z.focus(); }
+    else if(!e.shiftKey && document.activeElement===z){ e.preventDefault(); a.focus(); }
+  }
+  function init(){
+    document.documentElement.classList.add('dl-ready');
+    buildOverlay();
+    var GO='<span class="dl-go" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></span>';
+    document.querySelectorAll('section.section').forEach(function(sec){
+      if(SKIP[sec.id]) return;
+      var h2=sec.querySelector(':scope > h2'); if(!h2) return;
+      var after=[],n=h2.nextElementSibling; while(n){after.push(n);n=n.nextElementSibling;}
+      if(!after.length) return;
+      var panel=document.createElement('div'); panel.className='dl-panel'; panel.id='dl-'+sec.id;
+      var inner=document.createElement('div'); inner.className='dl-inner';
+      after.forEach(function(el){inner.appendChild(el);});
+      panel.appendChild(inner); sec.appendChild(panel);
+      var btn=document.createElement('button'); btn.type='button'; btn.className='dl-trigger';
+      btn.setAttribute('aria-haspopup','dialog');
+      var label=document.createElement('span'); label.className='dl-label';
+      var title=h2.textContent.trim();
+      while(h2.firstChild){label.appendChild(h2.firstChild);}
+      btn.appendChild(label); btn.insertAdjacentHTML('beforeend',GO); h2.appendChild(btn);
+      btn.addEventListener('click', function(){ open(sec.id, true); });
+      recs[sec.id]={panel:panel,inner:inner,title:title,trigger:btn};
+      var eb=sec.querySelector(':scope > .eyebrow');
+      if(eb){ eb.classList.add('dl-clickable'); eb.addEventListener('click', function(){ btn.click(); }); }
+    });
+    document.addEventListener('click', function(e){
+      var a=e.target.closest&&e.target.closest('a[href^="#"]'); if(!a) return;
+      var id=a.getAttribute('href').slice(1);
+      if(recs[id]){ e.preventDefault(); open(id, true); }
+    });
+    window.addEventListener('popstate', function(ev){
+      var s=ev.state;
+      if(s&&s.dv&&recs[s.dv]) open(s.dv, false);
+      else close();
+    });
+    var hsh=location.hash.slice(1);
+    if(recs[hsh]){ history.replaceState({dv:hsh},'','#'+hsh); open(hsh, false); }
+  }
+  if(document.readyState==='complete') setTimeout(init,30);
+  else window.addEventListener('load', function(){ setTimeout(init,30); });
 })();
 </script>
 </body>
