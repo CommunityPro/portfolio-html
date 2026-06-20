@@ -2184,6 +2184,52 @@ body.splash-lock{overflow:hidden}
   .sp-scroll-dot{animation:none !important}
 }
 </style>
+
+<style id="hero-video-bg">
+/* ══ HERO SECTION · VIDEO BACKGROUND ══ */
+#cover{overflow:hidden}
+
+.cover-video-bg{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  z-index:0;
+  pointer-events:none;
+}
+.cover-video-overlay{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(90deg,
+      rgba(5,7,15,.82) 0%,
+      rgba(8,12,26,.70) 45%,
+      rgba(13,20,48,.65) 100%),
+    linear-gradient(180deg,
+      rgba(5,7,15,.55) 0%,
+      transparent 35%,
+      transparent 65%,
+      rgba(5,7,15,.70) 100%);
+}
+
+/* Make cover panels sit above the video */
+#cover .cover-art{
+  position:relative;z-index:2;
+  background:
+    radial-gradient(ellipse at 30% 50%,rgba(167,139,250,.14),transparent 55%),
+    radial-gradient(ellipse at 70% 30%,rgba(86,180,255,.12),transparent 55%),
+    radial-gradient(ellipse at 50% 100%,rgba(93,214,163,.09),transparent 55%),
+    transparent !important;
+}
+#cover .cover-text{position:relative;z-index:2}
+
+/* Subtle video-aware glow on the portrait */
+#cover .hero-portrait{
+  filter:drop-shadow(0 0 40px rgba(86,180,255,.18)) drop-shadow(0 30px 60px rgba(0,0,0,.65));
+}
+
+@media(prefers-reduced-motion:reduce){
+  .cover-video-bg{display:none}
+}
+</style>
 </head>
 <body>
 <!-- ══ CINEMATIC SPLASH SCREEN ══ -->
@@ -2252,6 +2298,13 @@ body.splash-lock{overflow:hidden}
 
 <!-- §01 · COVER / HERO -->
 <section id="cover" class="section cover">
+  <!-- ══ HERO VIDEO BACKGROUND ══ -->
+  <video class="cover-video-bg" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+    <source src="assets/hero-video.mp4" type="video/mp4">
+  </video>
+  <div class="cover-video-overlay" aria-hidden="true"></div>
+  <!-- ══ END HERO VIDEO ══ -->
+
   <div class="cover-art reveal">
     <!-- Cinematic executive hero · real portrait framed in premium glass -->
     <div class="hero-stage">
