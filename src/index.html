@@ -2063,8 +2063,161 @@ a:focus-visible,button:focus-visible{
   .trust-cell:last-child{border-bottom:none}
 }
 
-</style></head>
+</style>
+<style id="splash-screen">
+/* ══════════════════════════════════════════════════════
+   CINEMATIC SPLASH SCREEN · VIDEO BACKGROUND ENTRY
+   ══════════════════════════════════════════════════════ */
+body.splash-lock{overflow:hidden}
+
+#splash{
+  position:fixed;inset:0;z-index:99999;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;background:#05070f;
+}
+#splash-video{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;z-index:0;
+}
+#splash-overlay{
+  position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(135deg,rgba(5,7,15,.72) 0%,rgba(8,12,26,.62) 40%,rgba(13,20,48,.68) 100%),
+    linear-gradient(0deg,rgba(5,7,15,.85) 0%,transparent 50%,rgba(5,7,15,.40) 100%);
+}
+#splash-content{
+  position:relative;z-index:2;
+  text-align:center;padding:2rem clamp(1.5rem,5vw,4rem);
+  max-width:780px;width:100%;
+  animation:sp-rise 1.4s .1s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes sp-rise{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:translateY(0)}}
+
+.sp-badge{
+  font-family:'JetBrains Mono','SF Mono','Menlo',monospace;
+  font-size:clamp(10px,1.4vw,12px);font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:#5dd6a3;margin-bottom:clamp(1rem,2.5vw,1.75rem);
+  opacity:0;animation:sp-rise 1s .35s cubic-bezier(.16,1,.3,1) both;
+}
+.sp-name{
+  font-family:'Cormorant Garamond','Playfair Display',serif;
+  font-size:clamp(3.2rem,9.5vw,7.5rem);font-weight:600;
+  line-height:1.02;letter-spacing:-.025em;margin:0 0 .8rem;
+  opacity:0;animation:sp-rise 1.1s .55s cubic-bezier(.16,1,.3,1) both;
+}
+.sp-name-first{
+  display:block;
+  background:linear-gradient(135deg,#fff 0%,#dde7ff 35%,#a78bfa 70%,#5dd6a3 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.sp-name-last{
+  display:block;color:#eaf0ff;
+  -webkit-text-fill-color:#eaf0ff;
+}
+.sp-tagline{
+  font-family:'Inter','Plus Jakarta Sans',system-ui,sans-serif;
+  font-size:clamp(.875rem,1.8vw,1.05rem);font-weight:400;
+  color:#8895b8;letter-spacing:.05em;
+  margin:0 0 clamp(1.5rem,3vw,2.5rem);
+  opacity:0;animation:sp-rise 1s .75s cubic-bezier(.16,1,.3,1) both;
+}
+.sp-rule{
+  width:72px;height:1px;margin:0 auto clamp(1.5rem,3vw,2.5rem);
+  background:linear-gradient(90deg,transparent,rgba(86,180,255,.65),transparent);
+  opacity:0;animation:sp-rise 1s .85s cubic-bezier(.16,1,.3,1) both;
+}
+#sp-enter{
+  display:inline-flex;align-items:center;gap:11px;
+  font-family:'Inter','Plus Jakarta Sans',system-ui,sans-serif;
+  font-size:clamp(13px,1.6vw,15px);font-weight:600;letter-spacing:.06em;
+  color:#fff;background:rgba(86,180,255,.12);
+  border:1px solid rgba(86,180,255,.38);border-radius:999px;
+  padding:clamp(11px,1.5vw,15px) clamp(22px,3.5vw,36px);
+  cursor:pointer;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  transition:background .32s ease,border-color .32s ease,
+             box-shadow .32s ease,transform .2s cubic-bezier(.34,1.56,.64,1);
+  opacity:0;animation:sp-rise 1s .95s cubic-bezier(.16,1,.3,1) both;
+}
+#sp-enter svg{width:17px;height:17px;flex-shrink:0;
+  transition:transform .32s cubic-bezier(.34,1.56,.64,1)}
+@media(hover:hover){
+  #sp-enter:hover{
+    background:rgba(86,180,255,.22);border-color:rgba(86,180,255,.58);
+    box-shadow:0 0 35px rgba(86,180,255,.28),0 0 80px rgba(86,180,255,.10);
+  }
+  #sp-enter:hover svg{transform:translateX(5px)}
+}
+#sp-enter:active{transform:scale(.97)}
+
+.sp-scroll-hint{
+  position:absolute;bottom:clamp(1.5rem,3vw,2.5rem);left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  color:rgba(136,149,184,.55);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  font-family:'JetBrains Mono',monospace;
+  opacity:0;animation:sp-rise 1s 1.4s cubic-bezier(.16,1,.3,1) both;
+}
+.sp-scroll-dot{
+  width:4px;height:4px;border-radius:50%;background:rgba(86,180,255,.45);
+  animation:sp-bounce 1.6s ease-in-out infinite;
+}
+.sp-scroll-dot:nth-child(2){animation-delay:.25s}
+.sp-scroll-dot:nth-child(3){animation-delay:.5s}
+@keyframes sp-bounce{0%,100%{transform:translateY(0);opacity:.3}50%{transform:translateY(-6px);opacity:1}}
+
+/* Exit animation */
+#splash.sp-exit{
+  animation:sp-out .85s cubic-bezier(.4,0,.2,1) forwards;
+  pointer-events:none;
+}
+@keyframes sp-out{
+  0%  {opacity:1;transform:scale(1)}
+  100%{opacity:0;transform:scale(1.06)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  #splash-content,.sp-badge,.sp-name,.sp-tagline,.sp-rule,#sp-enter,.sp-scroll-hint{
+    animation:none !important;opacity:1 !important;transform:none !important
+  }
+  #splash.sp-exit{animation:none !important;opacity:0 !important}
+  .sp-scroll-dot{animation:none !important}
+}
+</style>
+</head>
 <body>
+<!-- ══ CINEMATIC SPLASH SCREEN ══ -->
+<div id="splash" role="dialog" aria-label="Portfolio entry screen" aria-modal="true">
+  <video id="splash-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+    <source src="assets/splash-video.mp4" type="video/mp4">
+  </video>
+  <div id="splash-overlay" aria-hidden="true"></div>
+  <div id="splash-content">
+    <p class="sp-badge">Executive Finance Portfolio &middot; MENA &amp; GCC &middot; 2026</p>
+    <h1 class="sp-name">
+      <span class="sp-name-first">Mohanad</span>
+      <span class="sp-name-last">Ibrahim</span>
+    </h1>
+    <p class="sp-tagline">Strategic Finance Business Partner &nbsp;&middot;&nbsp; Finance Transformation Leader</p>
+    <div class="sp-rule" aria-hidden="true"></div>
+    <button id="sp-enter" type="button" autofocus>
+      <span>Enter Portfolio</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="5" y1="12" x2="19" y2="12"/>
+        <polyline points="12 5 19 12 12 19"/>
+      </svg>
+    </button>
+  </div>
+  <div class="sp-scroll-hint" aria-hidden="true">
+    <div class="sp-scroll-dot"></div>
+    <div class="sp-scroll-dot"></div>
+    <div class="sp-scroll-dot"></div>
+  </div>
+</div>
+<!-- ══ END SPLASH SCREEN ══ -->
+
+
 
 <!-- Loading Screen -->
 <div id="loader">
@@ -4325,6 +4478,40 @@ html.light .kpi-bottom-accent{
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
+})();
+</script>
+
+<script id="splash-logic">
+(function(){
+  var splash=document.getElementById('splash');
+  var btn=document.getElementById('sp-enter');
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  document.body.classList.add('splash-lock');
+
+  function dismiss(){
+    if(!splash||splash.classList.contains('sp-exit')) return;
+    if(reduce){
+      splash.style.opacity='0';
+      splash.style.display='none';
+      document.body.classList.remove('splash-lock');
+      return;
+    }
+    splash.classList.add('sp-exit');
+    splash.addEventListener('animationend',function(){
+      splash.style.display='none';
+      document.body.classList.remove('splash-lock');
+    },{once:true});
+  }
+
+  if(btn) btn.addEventListener('click', dismiss);
+
+  // Keyboard: Enter / Space / Escape dismisses
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Enter'||e.key===' '||e.key==='Escape'){
+      e.preventDefault(); dismiss();
+    }
+  },{once:true});
 })();
 </script>
 </body>
