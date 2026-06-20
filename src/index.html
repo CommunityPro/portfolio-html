@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Mohanad Ibrahim · Executive Finance Transformation Portfolio · MENA &amp; GCC 2026</title>
 <meta name="description" content="ATS-optimized Executive Finance Transformation Portfolio — Mohanad Ibrahim. Strategic Finance Business Partner · Finance Transformation Leader · Financial Governance Specialist. 8+ years across Egypt and the UAE.">
 <meta name="author" content="Mohanad Ibrahim">
@@ -2307,6 +2307,56 @@ body.dl-lock .scroll-progress{opacity:0}
   html.dl-ready section.section:not(#cover):not(#summary):not(#branding) .sec-num{display:block}
   .dl-trigger .dl-go{display:none !important}
   .dv{display:none !important}
+}
+</style>
+<style id="responsive-tune">
+/* ══════════════════════════════════════════════════════════════════════
+   RESPONSIVE TUNING · phone · tablet · laptop
+   Device-edge fixes for the splash + hero-video + detail-view additions.
+   Additive · last in cascade.
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ── Notch / safe-area awareness (viewport-fit=cover) ── */
+#splash-content{
+  padding-left:max(clamp(1.5rem,5vw,4rem),env(safe-area-inset-left));
+  padding-right:max(clamp(1.5rem,5vw,4rem),env(safe-area-inset-right));
+}
+.dv-bar{padding-left:max(clamp(16px,4vw,40px),env(safe-area-inset-left));
+        padding-right:max(clamp(16px,4vw,40px),env(safe-area-inset-right))}
+
+/* ── Splash: never clip the CTA on short / landscape phones ──
+   flex container + overflow-auto + margin:auto = centered when it fits,
+   scrollable when it doesn't (robust flexbox overflow pattern). ── */
+#splash{overflow-y:auto;-webkit-overflow-scrolling:touch}
+#splash-content{margin:auto}
+@media (max-height:600px){
+  #splash-content{padding-top:clamp(1.25rem,6vh,2.5rem);padding-bottom:clamp(1.25rem,6vh,2.5rem)}
+  .sp-name{font-size:clamp(2rem,7vh,3.6rem)}
+  .sp-badge{margin-bottom:.7rem}
+  .sp-tagline{margin-bottom:1rem}
+  .sp-rule{margin-bottom:1rem}
+  .sp-scroll-hint{display:none}
+}
+
+/* ── Tablet (721–1024px): comfortable single-column hero text ── */
+@media (max-width:1024px) and (min-width:721px){
+  #cover .cover-text{padding:48px 40px 64px}
+}
+
+/* ── Phone (≤600px): stronger vertical video contrast + tighter detail view ── */
+@media (max-width:600px){
+  #cover .cover-video-overlay{
+    background:linear-gradient(180deg,
+      rgba(5,7,15,.80) 0%,rgba(5,7,15,.55) 45%,rgba(5,7,15,.88) 100%);
+  }
+  .dv-body{padding:18px 16px 44px}
+  .dv-bar{padding-top:12px;padding-bottom:12px}
+}
+
+/* ── Tiny phones (≤380px): icon-only Back so the title never wraps ── */
+@media (max-width:380px){
+  .dv-back span{display:none}
+  .dv-back{padding:9px 11px}
 }
 </style>
 </head>
