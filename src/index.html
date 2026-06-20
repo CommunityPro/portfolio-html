@@ -4703,7 +4703,9 @@ html.light .kpi-bottom-accent{
     if(e.shiftKey && document.activeElement===a){ e.preventDefault(); z.focus(); }
     else if(!e.shiftKey && document.activeElement===z){ e.preventDefault(); a.focus(); }
   }
+  var inited=false;
   function init(){
+    if(inited) return; inited=true;   /* idempotent — guard against load firing twice (bfcache, etc.) */
     document.documentElement.classList.add('dl-ready');
     buildOverlay();
     var GO='<span class="dl-go" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></span>';
@@ -4726,12 +4728,22 @@ html.light .kpi-bottom-accent{
       recs[sec.id]={panel:panel,inner:inner,title:title,trigger:btn};
       var eb=sec.querySelector(':scope > .eyebrow');
       if(eb){ eb.classList.add('dl-clickable'); eb.addEventListener('click', function(){ btn.click(); }); }
+      /* Whole collapsed row is tappable (it shows cursor:pointer) — open unless an
+         interactive child was clicked. open() is idempotent (guards on current===id). */
+      sec.addEventListener('click', function(e){
+        if(e.target.closest('a,button,.dl-panel')) return;
+        open(sec.id, true);
+      });
     });
+    /* Capture phase: a link to a detail section opens the detail view and
+       pre-empts other handlers on that link (e.g. the top-nav smooth-scroll),
+       so the page no longer scrolls behind the overlay. Non-detail links
+       (cover/summary/branding, mailto, external) are left fully untouched. */
     document.addEventListener('click', function(e){
       var a=e.target.closest&&e.target.closest('a[href^="#"]'); if(!a) return;
       var id=a.getAttribute('href').slice(1);
-      if(recs[id]){ e.preventDefault(); open(id, true); }
-    });
+      if(recs[id]){ e.preventDefault(); e.stopPropagation(); open(id, true); }
+    }, true);
     window.addEventListener('popstate', function(ev){
       var s=ev.state;
       if(s&&s.dv&&recs[s.dv]) open(s.dv, false);
