@@ -6393,5 +6393,105 @@ html.dl-ready section.section:not(#cover):not(#summary):not(#branding),
   animation: none !important;
 }
 </style>
+<style id="static-mode">
+/* ════════════════════════════════════════════════════════════════════════════
+   STATIC MODE — every decorative effect / animation in sections 3–16 and the
+   detail view is switched off. Navigation still works (rows open, detail opens),
+   but nothing moves, transforms, brightens or animates → no glitches.
+   The per-section background is now carried by a video (see #dv-video-bg).
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* 1 · remove the animated section-background layers entirely */
+html.dl-ready section.section:not(#cover):not(#summary):not(#branding)::after,
+#detail-view[data-open-sec]::before {
+  content: none !important;
+  background: none !important;
+  animation: none !important;
+  display: none !important;
+}
+
+/* 2 · no transitions or keyframe animations on content + detail view */
+html.dl-ready section.section:not(#cover):not(#summary):not(#branding),
+html.dl-ready section.section:not(#cover):not(#summary):not(#branding) *,
+.dv, .dv * {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* 3 · no hover / active transforms, brightness or filter shifts */
+html.dl-ready section.section:not(#cover):not(#summary):not(#branding):hover,
+html.dl-ready section.section:not(#cover):not(#summary):not(#branding) *:hover,
+.dv-body *:hover,
+.dl-trigger:hover .dl-go,
+.dl-trigger:active .dl-go,
+.dv-back:active {
+  transform: none !important;
+  filter: none !important;
+}
+
+/* 4 · list rows: drop the hover background wash + accent rail */
+@media (hover:hover) {
+  html.dl-ready section.section:not(#cover):not(#summary):not(#branding):hover {
+    background: transparent !important;
+  }
+}
+html.dl-ready section.section:not(#cover):not(#summary):not(#branding)::before,
+html.dl-ready section.section:not(#cover):not(#summary):not(#branding):hover::before {
+  opacity: 0 !important;
+}
+</style>
+<style id="dv-video-styles">
+/* per-section background video inside the detail view (filled once videos are
+   embedded into window.SECTION_VIDEOS). A dark scrim keeps text readable. */
+.dv-bg-video{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; z-index:0; pointer-events:none; opacity:0;
+}
+.dv-bg-video.on{ opacity:1; }
+.dv-bg-scrim{
+  position:absolute; inset:0; z-index:0; pointer-events:none; opacity:0;
+  background:linear-gradient(180deg, rgba(6,9,18,.74), rgba(6,9,18,.84));
+}
+.dv-bg-scrim.on{ opacity:1; }
+</style>
+<script id="dv-video-bg">
+/* Detail-view background video. Plays ONLY the section that is currently open
+   (never all at once), and pauses on close — keeps memory/battery low.
+   To enable: populate window.SECTION_VIDEOS[<sectionId>] with a video URL or a
+   data:video/mp4;base64,... string. Empty entries simply show the dark bg. */
+(function(){
+  'use strict';
+  window.SECTION_VIDEOS = window.SECTION_VIDEOS || {
+    positioning:'', competencies:'', technical:'', experience:'', achievements:'',
+    transformation:'', erp:'', performance:'', ai:'', kpi:'', powerbi:'',
+    visual:'', dashboard:'', education:''
+  };
+  function setup(){
+    var dv=document.getElementById('detail-view'); if(!dv){ setTimeout(setup,150); return; }
+    var vid=document.createElement('video');
+    vid.className='dv-bg-video'; vid.muted=true; vid.loop=true;
+    vid.playsInline=true; vid.setAttribute('playsinline',''); vid.setAttribute('preload','auto');
+    var scrim=document.createElement('div'); scrim.className='dv-bg-scrim';
+    dv.insertBefore(scrim, dv.firstChild);
+    dv.insertBefore(vid, dv.firstChild);
+    function apply(){
+      var sec=dv.getAttribute('data-open-sec');
+      var src=sec && window.SECTION_VIDEOS[sec];
+      if(dv.classList.contains('open') && src){
+        if(vid.getAttribute('data-sec')!==sec){ vid.src=src; vid.setAttribute('data-sec',sec); }
+        vid.classList.add('on'); scrim.classList.add('on');
+        var p=vid.play(); if(p&&p.catch){ p.catch(function(){}); }
+      } else {
+        vid.classList.remove('on'); scrim.classList.remove('on');
+        try{ vid.pause(); }catch(e){}
+      }
+    }
+    new MutationObserver(apply).observe(dv,{attributes:true,attributeFilter:['data-open-sec','class']});
+    apply();
+  }
+  if(document.readyState==='complete') setTimeout(setup,80);
+  else window.addEventListener('load',function(){ setTimeout(setup,80); });
+})();
+</script>
 </body>
 </html>
