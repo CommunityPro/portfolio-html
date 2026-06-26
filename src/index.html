@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Mohanad Ibrahim · Executive Finance Transformation Portfolio · MENA &amp; GCC 2026</title>
 <meta name="description" content="ATS-optimized Executive Finance Transformation Portfolio — Mohanad Ibrahim. Strategic Finance Business Partner · Finance Transformation Leader · Financial Governance Specialist. 8+ years across Egypt and the UAE.">
 <meta name="author" content="Mohanad Ibrahim">
@@ -2184,6 +2184,195 @@ body.splash-lock{overflow:hidden}
   .sp-scroll-dot{animation:none !important}
 }
 </style>
+
+<style id="hero-video-bg">
+/* ══ HERO SECTION · VIDEO BACKGROUND ══ */
+/* translateZ(0) gives the hero its own compositor layer so the fixed
+   backdrop-filter navbar + animated background layers no longer force the
+   video to repaint on scroll (fixes the shimmer / brightness flicker). */
+#cover{overflow:hidden;transform:translateZ(0)}
+
+.cover-video-bg{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  z-index:0;
+  pointer-events:none;
+  /* Promote the video onto a stable GPU layer → no sub-pixel shimmer */
+  transform:translateZ(0);
+  -webkit-backface-visibility:hidden;backface-visibility:hidden;
+  will-change:transform;
+}
+.cover-video-overlay{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  transform:translateZ(0);              /* keep overlay on the video's layer */
+  -webkit-backface-visibility:hidden;backface-visibility:hidden;
+  background:
+    linear-gradient(90deg,
+      rgba(5,7,15,.82) 0%,
+      rgba(8,12,26,.70) 45%,
+      rgba(13,20,48,.65) 100%),
+    linear-gradient(180deg,
+      rgba(5,7,15,.55) 0%,
+      transparent 35%,
+      transparent 65%,
+      rgba(5,7,15,.70) 100%);
+}
+
+/* Make cover panels sit above the video */
+#cover .cover-art{
+  position:relative;z-index:2;
+  background:
+    radial-gradient(ellipse at 30% 50%,rgba(167,139,250,.14),transparent 55%),
+    radial-gradient(ellipse at 70% 30%,rgba(86,180,255,.12),transparent 55%),
+    radial-gradient(ellipse at 50% 100%,rgba(93,214,163,.09),transparent 55%),
+    transparent !important;
+}
+#cover .cover-text{position:relative;z-index:2}
+
+/* Subtle video-aware glow on the portrait */
+#cover .hero-portrait{
+  filter:drop-shadow(0 0 40px rgba(86,180,255,.18)) drop-shadow(0 30px 60px rgba(0,0,0,.65));
+}
+
+@media(prefers-reduced-motion:reduce){
+  .cover-video-bg{display:none}
+}
+/* background-attachment:fixed is a known scroll-jitter source on touch devices;
+   let the subtle grid scroll with content there for a smooth, flicker-free hero */
+@media(max-width:1024px){
+  body{background-attachment:scroll}
+}
+</style>
+<style id="md-styles">
+/* ══════════════════════════════════════════════════════════════════════
+   MASTER–DETAIL · القائمة الرئيسية → صفحة التفاصيل (Expandable ListView)
+   اضغط على العنوان (‹) لفتح صفحة تفاصيل كاملة بها زر رجوع. انزلاق من الجانب.
+   مُطبّق على الأقسام 3 → 16 · مُستثنى: Cover + Summary + Branding يبقون كاملين.
+   Gated on .dl-ready (no-JS = full content) · RTL · a11y · History · print-safe
+   ══════════════════════════════════════════════════════════════════════ */
+html.dl-ready .dl-panel{display:none}
+
+/* Main list: compact tappable rows (except cover/summary/branding) */
+html.dl-ready section.section:not(#cover):not(#summary):not(#branding){
+  min-height:auto !important;justify-content:flex-start;
+  padding:clamp(22px,3.4vw,34px) clamp(20px,5vw,72px) !important;cursor:pointer;
+  transition:filter .3s var(--ease),background .3s var(--ease);
+}
+html.dl-ready section.section:not(#cover):not(#summary):not(#branding) .sec-num{display:none}
+html.dl-ready section.section:not(#cover):not(#summary):not(#branding) > .eyebrow{margin-bottom:7px}
+html.dl-ready section.section:not(#cover):not(#summary):not(#branding) h2{margin:0;font-size:clamp(1.35rem,4vw,2.1rem)}
+@media(hover:hover){html.dl-ready section.section:not(#cover):not(#summary):not(#branding):hover{filter:brightness(1.12)}}
+
+/* Title trigger + affordance chevron ‹ */
+.dl-trigger{display:flex;align-items:center;gap:.7em;width:100%;font:inherit;color:inherit;
+  background:none;border:none;padding:0;margin:0;text-align:start;cursor:pointer}
+.dl-trigger .dl-label{flex:1 1 auto;min-width:0}
+.dl-trigger .dl-go{flex:0 0 auto;margin-inline-start:.4em;width:36px;height:36px;border-radius:50%;
+  display:grid;place-items:center;color:var(--blue);background:rgba(86,180,255,.10);
+  border:1px solid var(--line-soft);transition:transform .35s var(--ease),background .3s var(--ease),color .3s var(--ease)}
+.dl-trigger .dl-go svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+@media(hover:hover){.dl-trigger:hover .dl-go{background:rgba(86,180,255,.22);color:var(--blue-2);transform:translateX(3px)}}
+html[lang="ar"] .dl-trigger:hover .dl-go,[dir="rtl"] .dl-trigger:hover .dl-go{transform:translateX(-3px)}
+.dl-trigger:active .dl-go{transform:scale(.94)}
+.dl-trigger:focus-visible{outline:none}
+.dl-trigger:focus-visible .dl-go{outline:2px solid var(--blue);outline-offset:3px}
+.eyebrow.dl-clickable{cursor:pointer}
+
+/* Detail view (full-screen page) · slide in from the side */
+.dv{position:fixed;inset:0;z-index:1200;display:flex;flex-direction:column;
+  background:
+    radial-gradient(1100px 560px at 80% -8%,rgba(86,180,255,.12),transparent 60%),
+    radial-gradient(900px 520px at 5% 12%,rgba(167,139,250,.10),transparent 60%),
+    linear-gradient(180deg,#05070f 0%,#070b1c 50%,#05070f 100%);
+  visibility:hidden;transform:translateX(100%);
+  transition:transform .42s var(--ease),visibility 0s linear .42s}
+.dv.open{visibility:visible;transform:translateX(0);transition:transform .42s var(--ease)}
+/* RTL: slide in from the left. .dv.open scoped higher so it settles at 0 */
+html[lang="ar"] .dv,[dir="rtl"] .dv{transform:translateX(-100%)}
+html[lang="ar"] .dv.open,[dir="rtl"] .dv.open{transform:translateX(0)}
+.dv-bar{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:14px;
+  padding:14px clamp(16px,4vw,40px);backdrop-filter:blur(20px) saturate(140%);
+  -webkit-backdrop-filter:blur(20px) saturate(140%);
+  background:rgba(8,12,28,.74);border-bottom:1px solid var(--line-soft)}
+.dv-back{display:inline-flex;align-items:center;gap:.5em;cursor:pointer;flex:0 0 auto;
+  background:rgba(86,180,255,.12);border:1px solid var(--line-soft);color:var(--ink);
+  border-radius:999px;padding:9px 16px 9px 13px;font:inherit;font-weight:600;font-size:14px;
+  transition:background .25s var(--ease),transform .2s var(--ease)}
+.dv-back svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+@media(hover:hover){.dv-back:hover{background:rgba(86,180,255,.22)}}
+.dv-back:active{transform:scale(.96)}
+html[lang="ar"] .dv-back svg,[dir="rtl"] .dv-back svg{transform:scaleX(-1)}
+.dv-title{font-family:var(--display,inherit);font-weight:700;color:var(--ink);min-width:0;
+  font-size:clamp(1rem,3.4vw,1.3rem);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dv-body{flex:1 1 auto;overflow-y:auto;-webkit-overflow-scrolling:touch;width:100%;
+  padding:clamp(22px,4vw,52px);max-width:1140px;margin:0 auto}
+body.dl-lock{overflow:hidden}
+body.dl-lock .scroll-progress{opacity:0}
+
+@media (prefers-reduced-motion:reduce){
+  .dv,.dv.open,.dl-trigger .dl-go,.dv-back,
+  html.dl-ready section.section:not(#cover):not(#summary):not(#branding){transition:none}
+  .dv{transform:none}
+}
+@media print{
+  html.dl-ready .dl-panel{display:block !important}
+  html.dl-ready section.section:not(#cover):not(#summary):not(#branding){min-height:auto !important;padding:24px 0 !important}
+  html.dl-ready section.section:not(#cover):not(#summary):not(#branding) .sec-num{display:block}
+  .dl-trigger .dl-go{display:none !important}
+  .dv{display:none !important}
+}
+</style>
+<style id="responsive-tune">
+/* ══════════════════════════════════════════════════════════════════════
+   RESPONSIVE TUNING · phone · tablet · laptop
+   Device-edge fixes for the splash + hero-video + detail-view additions.
+   Additive · last in cascade.
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ── Notch / safe-area awareness (viewport-fit=cover) ── */
+#splash-content{
+  padding-left:max(clamp(1.5rem,5vw,4rem),env(safe-area-inset-left));
+  padding-right:max(clamp(1.5rem,5vw,4rem),env(safe-area-inset-right));
+}
+.dv-bar{padding-left:max(clamp(16px,4vw,40px),env(safe-area-inset-left));
+        padding-right:max(clamp(16px,4vw,40px),env(safe-area-inset-right))}
+
+/* ── Splash: never clip the CTA on short / landscape phones ──
+   flex container + overflow-auto + margin:auto = centered when it fits,
+   scrollable when it doesn't (robust flexbox overflow pattern). ── */
+#splash{overflow-y:auto;-webkit-overflow-scrolling:touch}
+#splash-content{margin:auto}
+@media (max-height:600px){
+  #splash-content{padding-top:clamp(1.25rem,6vh,2.5rem);padding-bottom:clamp(1.25rem,6vh,2.5rem)}
+  .sp-name{font-size:clamp(2rem,7vh,3.6rem)}
+  .sp-badge{margin-bottom:.7rem}
+  .sp-tagline{margin-bottom:1rem}
+  .sp-rule{margin-bottom:1rem}
+  .sp-scroll-hint{display:none}
+}
+
+/* ── Tablet (721–1024px): comfortable single-column hero text ── */
+@media (max-width:1024px) and (min-width:721px){
+  #cover .cover-text{padding:48px 40px 64px}
+}
+
+/* ── Phone (≤600px): stronger vertical video contrast + tighter detail view ── */
+@media (max-width:600px){
+  #cover .cover-video-overlay{
+    background:linear-gradient(180deg,
+      rgba(5,7,15,.80) 0%,rgba(5,7,15,.55) 45%,rgba(5,7,15,.88) 100%);
+  }
+  .dv-body{padding:18px 16px 44px}
+  .dv-bar{padding-top:12px;padding-bottom:12px}
+}
+
+/* ── Tiny phones (≤380px): icon-only Back so the title never wraps ── */
+@media (max-width:380px){
+  .dv-back span{display:none}
+  .dv-back{padding:9px 11px}
+}
+</style>
 </head>
 <body>
 <!-- ══ CINEMATIC SPLASH SCREEN ══ -->
@@ -2252,6 +2441,13 @@ body.splash-lock{overflow:hidden}
 
 <!-- §01 · COVER / HERO -->
 <section id="cover" class="section cover">
+  <!-- ══ HERO VIDEO BACKGROUND ══ -->
+  <video class="cover-video-bg" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+    <source src="assets/hero-video.mp4" type="video/mp4">
+  </video>
+  <div class="cover-video-overlay" aria-hidden="true"></div>
+  <!-- ══ END HERO VIDEO ══ -->
+
   <div class="cover-art reveal">
     <!-- Cinematic executive hero · real portrait framed in premium glass -->
     <div class="hero-stage">
@@ -4514,5 +4710,616 @@ html.light .kpi-bottom-accent{
   },{once:true});
 })();
 </script>
+<script id="md-script">
+(function(){
+  "use strict";
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  /* مُستثنى من الطيّ: الغلاف + الملخّص + الخاتمة → يبقى التطبيق على الأقسام 3 حتى 16 */
+  var SKIP={cover:1,summary:1,branding:1};
+  var recs={}, current=null, dv, dvTitle, dvBody, dvBack;
+
+  function buildOverlay(){
+    dv=document.createElement('div'); dv.className='dv'; dv.id='detail-view';
+    dv.setAttribute('role','dialog'); dv.setAttribute('aria-modal','true'); dv.setAttribute('aria-labelledby','dv-title');
+    var bar=document.createElement('div'); bar.className='dv-bar';
+    dvBack=document.createElement('button'); dvBack.type='button'; dvBack.className='dv-back';
+    dvBack.setAttribute('aria-label','Back to list · العودة للقائمة');
+    dvBack.innerHTML='<svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg><span>Back · رجوع</span>';
+    dvBack.addEventListener('click', function(){ history.back(); });
+    dvTitle=document.createElement('span'); dvTitle.className='dv-title'; dvTitle.id='dv-title';
+    bar.appendChild(dvBack); bar.appendChild(dvTitle);
+    dvBody=document.createElement('div'); dvBody.className='dv-body'; dvBody.id='dv-body';
+    dv.appendChild(bar); dv.appendChild(dvBody); document.body.appendChild(dv);
+  }
+  function resizeCharts(scope){
+    if(window.Chart&&Chart.getChart){scope.querySelectorAll('canvas').forEach(function(cv){
+      var c=Chart.getChart(cv); if(c){try{c.resize();}catch(e){}}});}
+  }
+  function moveBack(id){ var r=recs[id]; if(r) r.panel.appendChild(r.inner); }
+  function open(id, push){
+    var r=recs[id]; if(!r||current===id) return;
+    if(current){ moveBack(current); current=null; }
+    current=id;
+    dvTitle.textContent=r.title;
+    dvBody.appendChild(r.inner);
+    r.inner.querySelectorAll('.reveal').forEach(function(x){x.classList.add('visible');});
+    document.body.classList.add('dl-lock');
+    dv.classList.add('open'); dvBody.scrollTop=0;
+    if(push!==false) history.pushState({dv:id}, '', '#'+id);
+    setTimeout(function(){ try{dvBack.focus({preventScroll:true});}catch(e){dvBack.focus();} }, reduce?0:60);
+    setTimeout(function(){ resizeCharts(dvBody); window.dispatchEvent(new Event('resize')); }, reduce?0:420);
+    document.addEventListener('keydown', onKey);
+  }
+  function close(){
+    if(!current) return;
+    var id=current, trig=recs[id].trigger;
+    dv.classList.remove('open'); document.body.classList.remove('dl-lock');
+    document.removeEventListener('keydown', onKey);
+    var done=function(){ moveBack(id); current=null;
+      if(trig){ try{trig.focus({preventScroll:true});}catch(e){trig.focus();} } };
+    if(reduce) done(); else setTimeout(done, 410);
+  }
+  function onKey(e){
+    if(e.key==='Escape'){ e.preventDefault(); history.back(); return; }
+    if(e.key!=='Tab') return;
+    var f=dv.querySelectorAll('a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])');
+    if(!f.length) return; var a=f[0], z=f[f.length-1];
+    if(e.shiftKey && document.activeElement===a){ e.preventDefault(); z.focus(); }
+    else if(!e.shiftKey && document.activeElement===z){ e.preventDefault(); a.focus(); }
+  }
+  var inited=false;
+  function init(){
+    if(inited) return; inited=true;   /* idempotent — guard against load firing twice (bfcache, etc.) */
+    document.documentElement.classList.add('dl-ready');
+    buildOverlay();
+    var GO='<span class="dl-go" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></span>';
+    document.querySelectorAll('section.section').forEach(function(sec){
+      if(SKIP[sec.id]) return;
+      var h2=sec.querySelector(':scope > h2'); if(!h2) return;
+      var after=[],n=h2.nextElementSibling; while(n){after.push(n);n=n.nextElementSibling;}
+      if(!after.length) return;
+      var panel=document.createElement('div'); panel.className='dl-panel'; panel.id='dl-'+sec.id;
+      var inner=document.createElement('div'); inner.className='dl-inner';
+      after.forEach(function(el){inner.appendChild(el);});
+      panel.appendChild(inner); sec.appendChild(panel);
+      var btn=document.createElement('button'); btn.type='button'; btn.className='dl-trigger';
+      btn.setAttribute('aria-haspopup','dialog');
+      var label=document.createElement('span'); label.className='dl-label';
+      var title=h2.textContent.trim();
+      while(h2.firstChild){label.appendChild(h2.firstChild);}
+      btn.appendChild(label); btn.insertAdjacentHTML('beforeend',GO); h2.appendChild(btn);
+      btn.addEventListener('click', function(){ open(sec.id, true); });
+      recs[sec.id]={panel:panel,inner:inner,title:title,trigger:btn};
+      var eb=sec.querySelector(':scope > .eyebrow');
+      if(eb){ eb.classList.add('dl-clickable'); eb.addEventListener('click', function(){ btn.click(); }); }
+      /* Whole collapsed row is tappable (it shows cursor:pointer) — open unless an
+         interactive child was clicked. open() is idempotent (guards on current===id). */
+      sec.addEventListener('click', function(e){
+        if(e.target.closest('a,button,.dl-panel')) return;
+        open(sec.id, true);
+      });
+    });
+    /* Capture phase: a link to a detail section opens the detail view and
+       pre-empts other handlers on that link (e.g. the top-nav smooth-scroll),
+       so the page no longer scrolls behind the overlay. Non-detail links
+       (cover/summary/branding, mailto, external) are left fully untouched. */
+    document.addEventListener('click', function(e){
+      var a=e.target.closest&&e.target.closest('a[href^="#"]'); if(!a) return;
+      var id=a.getAttribute('href').slice(1);
+      if(recs[id]){ e.preventDefault(); e.stopPropagation(); open(id, true); }
+    }, true);
+    window.addEventListener('popstate', function(ev){
+      var s=ev.state;
+      if(s&&s.dv&&recs[s.dv]) open(s.dv, false);
+      else close();
+    });
+    var hsh=location.hash.slice(1);
+    if(recs[hsh]){
+      /* seed a list entry first so Back from a direct #section link closes to the list
+         (instead of leaving the page), matching the row-click open() flow */
+      history.replaceState(null, '', location.pathname + location.search);
+      history.pushState({dv:hsh}, '', '#'+hsh);
+      open(hsh, false);
+    }
+  }
+  if(document.readyState==='complete') setTimeout(init,30);
+  else window.addEventListener('load', function(){ setTimeout(init,30); });
+})();
+</script>
+<style id="premium-redesign-2026">
+/* ══════════════════════════════════════════════════════════════════════════════
+   PREMIUM REDESIGN · SECTIONS 3–16  (positioning → education)
+   ──────────────────────────────────────────────────────────────────────────────
+   Visual-only redesign. Zero functional / structural / content changes.
+   Inspired by Apple · Linear · Notion · Stripe · Arc · Material Design 3.
+   Scoped strictly to the two contexts that render sections 3–16:
+     1. Collapsed list rows  →  html.dl-ready section.section:not(#cover):not(#summary):not(#branding)
+     2. Detail view (page)   →  .dv / .dv-bar / .dv-body
+   Cover, Summary, Branding and the global theme are never touched.
+   8pt spacing · Inter / SF Pro · 16–24px radii · soft shadows · glass · WCAG-AA.
+   Additive · last in cascade.
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+:root{
+  /* ── Design tokens (8pt scale, refined dark-premium surfaces) ── */
+  --rd-font:        'Inter','SF Pro Display',-apple-system,system-ui,'Segoe UI',sans-serif;
+
+  --rd-r-xl:        24px;
+  --rd-r-lg:        20px;
+  --rd-r-md:        16px;
+  --rd-r-sm:        12px;
+  --rd-r-pill:      999px;
+
+  --rd-s-1:         8px;
+  --rd-s-2:         16px;
+  --rd-s-3:         24px;
+  --rd-s-4:         32px;
+  --rd-s-5:         40px;
+  --rd-s-6:         48px;
+
+  /* Surfaces — calmer, lower-noise glass */
+  --rd-surface:     rgba(255,255,255,.035);
+  --rd-surface-2:   rgba(255,255,255,.055);
+  --rd-surface-3:   rgba(255,255,255,.075);
+  --rd-inset:       rgba(8,12,24,.42);
+
+  /* Hairlines */
+  --rd-line:        rgba(255,255,255,.085);
+  --rd-line-2:      rgba(255,255,255,.14);
+  --rd-line-hover:  rgba(150,180,235,.36);
+
+  /* Ink — lifted for AA contrast on dark */
+  --rd-ink:         #f4f7ff;
+  --rd-ink-2:       #d8e2fb;
+  --rd-ink-3:       #aab6d6;
+  --rd-ink-4:       #8a97ba;
+
+  /* Soft, low-chroma shadows (Stripe/Linear-like depth) */
+  --rd-shadow:      0 1px 2px rgba(2,5,15,.30), 0 14px 34px -16px rgba(2,5,15,.62);
+  --rd-shadow-2:    0 1px 0 rgba(255,255,255,.06) inset, 0 22px 56px -20px rgba(2,5,15,.70);
+  --rd-ring:        0 0 0 4px rgba(86,180,255,.22);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   1 · COLLAPSED LIST ROWS — calm Linear/Notion list of navigable sections
+   ══════════════════════════════════════════════════════════════════════════════ */
+html.dl-ready section.section:not(#cover):not(#summary):not(#branding){
+  background:transparent !important;          /* flatten alt/deep/dark bands → uniform list */
+  border-top:1px solid var(--rd-line);
+  transition:background .28s var(--ease), box-shadow .28s var(--ease);
+}
+/* hairline closes the list after the last styled in-scope row; #branding stays untouched */
+html.dl-ready #education{border-bottom:1px solid var(--rd-line)}
+
+@media(hover:hover){
+  html.dl-ready section.section:not(#cover):not(#summary):not(#branding):hover{
+    filter:none;                              /* drop the global brightness pop → calmer */
+    background:linear-gradient(90deg,
+      rgba(120,160,235,.06) 0%,
+      rgba(120,160,235,.02) 40%,
+      transparent 100%) !important;
+  }
+}
+/* left accent rail reveals on hover */
+html.dl-ready section.section:not(#cover):not(#summary):not(#branding)::before{
+  content:'';position:absolute;inset-inline-start:0;top:14%;bottom:14%;
+  width:3px;border-radius:3px;
+  background:linear-gradient(180deg,var(--mint),var(--blue),var(--violet));
+  opacity:0;transform:scaleY(.4);transform-origin:center;
+  transition:opacity .3s var(--ease),transform .35s var(--ease);
+  pointer-events:none;
+}
+@media(hover:hover){
+  html.dl-ready section.section:not(#cover):not(#summary):not(#branding):hover::before{opacity:.9;transform:scaleY(1)}
+}
+
+/* Eyebrow in list → minimal uppercase label (no heavy chip) */
+html.dl-ready section.section:not(#cover):not(#summary):not(#branding) > .eyebrow{
+  background:none;border:none;backdrop-filter:none;-webkit-backdrop-filter:none;
+  padding:0;margin-bottom:10px;gap:9px;
+  font-family:var(--rd-font);font-weight:600;font-size:11px;letter-spacing:.16em;
+  color:var(--rd-ink-4);
+}
+html.dl-ready section.section:not(#cover):not(#summary):not(#branding) > .eyebrow::before{
+  width:6px;height:6px;box-shadow:0 0 10px var(--mint)
+}
+
+/* Title in list → Inter, tight, highly readable */
+html.dl-ready section.section:not(#cover):not(#summary):not(#branding) h2{
+  font-family:var(--rd-font) !important;
+  font-weight:650;letter-spacing:-.022em;line-height:1.18;
+  color:var(--rd-ink);
+  font-size:clamp(1.3rem,3.6vw,1.9rem);
+}
+html.dl-ready section.section:not(#cover):not(#summary):not(#branding) h2 em{
+  font-style:normal;font-weight:650;
+  -webkit-text-fill-color:initial;background:none;
+  color:var(--blue-2);
+}
+
+/* Chevron affordance → square-rounded, Linear-style */
+html.dl-ready .dl-trigger .dl-go{
+  width:34px;height:34px;border-radius:11px;
+  background:var(--rd-surface-2);border:1px solid var(--rd-line);
+  color:var(--rd-ink-3);
+}
+@media(hover:hover){
+  html.dl-ready .dl-trigger:hover .dl-go{
+    background:rgba(86,180,255,.16);border-color:var(--rd-line-hover);color:var(--blue-2);
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   2 · DETAIL VIEW CHROME — premium full-screen page
+   ══════════════════════════════════════════════════════════════════════════════ */
+.dv{
+  background:
+    radial-gradient(1200px 560px at 82% -12%,rgba(86,180,255,.10),transparent 62%),
+    radial-gradient(900px 520px at 4% 8%,rgba(167,139,250,.08),transparent 60%),
+    linear-gradient(180deg,#070a14 0%,#080c18 52%,#06080f 100%);
+}
+.dv-bar{
+  gap:var(--rd-s-2);
+  padding-top:14px;padding-bottom:14px;
+  background:rgba(8,11,22,.66);
+  border-bottom:1px solid var(--rd-line);
+  backdrop-filter:blur(22px) saturate(150%);
+  -webkit-backdrop-filter:blur(22px) saturate(150%);
+}
+.dv-back{
+  background:var(--rd-surface-2);
+  border:1px solid var(--rd-line);
+  color:var(--rd-ink-2);
+  border-radius:var(--rd-r-pill);
+  padding:9px 16px 9px 12px;font-family:var(--rd-font);font-weight:600;
+}
+@media(hover:hover){.dv-back:hover{background:rgba(86,180,255,.18);border-color:var(--rd-line-hover);color:var(--rd-ink)}}
+.dv-back:focus-visible{outline:none;box-shadow:var(--rd-ring)}
+.dv-title{
+  font-family:var(--rd-font);font-weight:650;letter-spacing:-.018em;color:var(--rd-ink);
+}
+.dv-body{
+  max-width:1080px;
+  padding:clamp(24px,4vw,56px) clamp(20px,4vw,52px) clamp(56px,8vw,96px);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   3 · TYPOGRAPHY INSIDE DETAIL VIEW
+   ══════════════════════════════════════════════════════════════════════════════ */
+.dv-body h2,.dv-body h3,.dv-body h4,.dv-body h5,.dv-body h6{
+  font-family:var(--rd-font) !important;color:var(--rd-ink);
+}
+.dv-body h3{
+  font-size:clamp(1.15rem,2.6vw,1.5rem);font-weight:650;letter-spacing:-.02em;
+  margin:var(--rd-s-5) 0 var(--rd-s-3);line-height:1.25;
+}
+.dv-body h3 em{font-style:normal;font-weight:650;color:var(--violet-2)}
+.dv-body h4{font-size:17px;font-weight:650;letter-spacing:-.012em}
+.dv-body .lead{
+  font-family:var(--rd-font);
+  font-size:clamp(15px,1.7vw,17px);line-height:1.72;
+  color:var(--rd-ink-2);max-width:68ch;
+  margin-bottom:var(--rd-s-5);font-weight:400;
+}
+.dv-body p{color:var(--rd-ink-2);line-height:1.72}
+.dv-body strong{color:var(--rd-ink);font-weight:650}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   4 · SHARED CARD SYSTEM — calm surfaces, soft depth, neutralized busy orbs
+   ══════════════════════════════════════════════════════════════════════════════ */
+.dv-body .pillar,
+.dv-body .matrix-cluster,
+.dv-body .icon-card,
+.dv-body .stat-block,
+.dv-body .case-block,
+.dv-body .schema-block,
+.dv-body .viz-spec,
+.dv-body .kpi,
+.dv-body .chart-card{
+  background:var(--rd-surface);
+  border:1px solid var(--rd-line);
+  box-shadow:var(--rd-shadow);
+  backdrop-filter:blur(16px) saturate(130%);
+  -webkit-backdrop-filter:blur(16px) saturate(130%);
+  transition:transform .34s var(--ease),border-color .34s var(--ease),box-shadow .34s var(--ease),background .34s var(--ease);
+}
+/* retire the noisy radial glow blobs for a cleaner, minimal surface */
+.dv-body .pillar::after,
+.dv-body .icon-card::after{display:none}
+
+@media(hover:hover){
+  .dv-body .pillar:hover,
+  .dv-body .matrix-cluster:hover,
+  .dv-body .icon-card:hover,
+  .dv-body .stat-block:hover,
+  .dv-body .case-block:hover,
+  .dv-body .schema-block:hover,
+  .dv-body .viz-spec:hover,
+  .dv-body .kpi:hover,
+  .dv-body .chart-card:hover{
+    transform:translateY(-4px);
+    border-color:var(--rd-line-hover);
+    box-shadow:var(--rd-shadow-2);
+    background:var(--rd-surface-2);
+  }
+}
+
+/* ── Positioning pillars ─────────────────────────────────────────────────────── */
+.dv-body .positioning-pillars{gap:var(--rd-s-3)}
+.dv-body .pillar{padding:var(--rd-s-4) var(--rd-s-3);border-radius:var(--rd-r-lg)}
+.dv-body .pillar::before{height:3px;opacity:.85}
+.dv-body .pillar-num{
+  font-family:var(--rd-font);font-weight:800;font-size:30px;
+  -webkit-text-fill-color:initial;background:none;color:var(--blue-2);
+  letter-spacing:-.03em;margin-bottom:var(--rd-s-2);
+}
+.dv-body .pillar-title{font-family:var(--rd-font);font-weight:650;font-size:16px;margin-bottom:10px;color:var(--rd-ink)}
+.dv-body .pillar-desc{color:var(--rd-ink-3);font-size:13.5px;line-height:1.68}
+
+/* ── Competencies matrix ─────────────────────────────────────────────────────── */
+.dv-body .matrix-grid{gap:var(--rd-s-3)}
+.dv-body .matrix-cluster{padding:var(--rd-s-4);border-radius:var(--rd-r-xl)}
+.dv-body .matrix-cluster::before{width:3px;opacity:.8}
+.dv-body .cluster-head{
+  margin-bottom:var(--rd-s-2);padding-bottom:var(--rd-s-2);
+  border-bottom:1px solid var(--rd-line);gap:12px;flex-wrap:wrap;
+}
+.dv-body .cluster-head h4{font-size:15.5px}
+.dv-body .cluster-tag{
+  font-family:var(--rd-font);font-weight:600;font-size:10px;letter-spacing:.1em;
+  background:rgba(93,214,163,.10);border-color:rgba(93,214,163,.28);
+  border-radius:var(--rd-r-pill);padding:5px 11px;
+}
+.dv-body .skill-row{
+  padding:11px 0;border-bottom:1px solid var(--rd-line);
+  border-radius:8px;transition:padding .2s var(--ease),background .2s var(--ease);
+}
+.dv-body .skill-row:hover{padding-left:10px;padding-right:10px;background:var(--rd-surface)}
+.dv-body .skill-row .name{color:var(--rd-ink-2)}
+.dv-body .skill-row .level{font-family:var(--mono);font-size:11px;letter-spacing:.14em}
+.dv-body .skill-row .level.expert{color:var(--mint-2)}
+.dv-body .skill-row .level.advanced{color:var(--blue-2)}
+.dv-body .skill-row .level.proficient{color:var(--rd-ink-4)}
+
+/* ── Icon cards (cards-3 / cards-4) ──────────────────────────────────────────── */
+.dv-body .cards-3{gap:var(--rd-s-3)}
+.dv-body .cards-4{gap:var(--rd-s-2)}
+.dv-body .icon-card{padding:var(--rd-s-4) var(--rd-s-3);border-radius:var(--rd-r-lg)}
+.dv-body .icon-card-circle{
+  width:48px;height:48px;border-radius:14px;margin-bottom:var(--rd-s-3);
+  background:linear-gradient(135deg,rgba(86,180,255,.16),rgba(167,139,250,.14));
+  border:1px solid var(--rd-line-2);
+  box-shadow:0 6px 18px -6px rgba(86,180,255,.30),inset 0 1px 0 rgba(255,255,255,.10);
+}
+.dv-body .icon-card-circle svg{stroke:var(--blue-2);width:22px;height:22px}
+.dv-body .icon-card h4{font-size:16.5px;margin-bottom:10px}
+.dv-body .icon-card p{color:var(--rd-ink-3);font-size:13.5px;line-height:1.7}
+.dv-body .icon-card p strong{color:var(--rd-ink)}
+
+/* ── Achievements stats ──────────────────────────────────────────────────────── */
+.dv-body .stats-grid{gap:var(--rd-s-3);margin-top:var(--rd-s-5);padding-top:var(--rd-s-5);border-top:1px solid var(--rd-line)}
+.dv-body .stat-block{padding:var(--rd-s-4) var(--rd-s-3);border-radius:var(--rd-r-lg)}
+.dv-body .stat-block::before{opacity:.5}
+.dv-body .stat-num{font-family:var(--rd-font);font-size:clamp(34px,4.6vw,54px);letter-spacing:-.04em}
+.dv-body .stat-label{font-family:var(--rd-font);color:var(--rd-ink-2)}
+.dv-body .stat-sub{color:var(--rd-ink-4)}
+
+/* ── Case study blocks (erp / performance / kpi / education) ─────────────────── */
+.dv-body .case-block{padding:var(--rd-s-4);border-radius:var(--rd-r-xl)}
+.dv-body .case-header{
+  align-items:flex-start;gap:var(--rd-s-2);
+  padding-bottom:var(--rd-s-3);margin-bottom:var(--rd-s-3);
+  border-bottom:1px solid var(--rd-line);
+}
+.dv-body .case-id{
+  font-family:var(--rd-font);font-weight:600;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--blue-2);margin-bottom:8px;
+}
+.dv-body .case-title{font-family:var(--rd-font);font-weight:650;font-size:clamp(16px,2.2vw,19px);letter-spacing:-.015em;color:var(--rd-ink);line-height:1.35}
+.dv-body .case-tag{
+  font-family:var(--rd-font);font-weight:600;font-size:11px;letter-spacing:.04em;
+  background:var(--rd-surface-2);border:1px solid var(--rd-line);color:var(--rd-ink-3);
+  border-radius:var(--rd-r-pill);padding:6px 13px;white-space:nowrap;
+}
+.dv-body .case-grid{gap:var(--rd-s-2)}
+.dv-body .case-cell{
+  background:var(--rd-inset);
+  border:1px solid var(--rd-line);
+  border-radius:var(--rd-r-md);
+  padding:var(--rd-s-3);
+  transition:border-color .28s var(--ease),background .28s var(--ease);
+}
+@media(hover:hover){.dv-body .case-cell:hover{border-color:var(--rd-line-2);background:rgba(255,255,255,.03)}}
+.dv-body .case-cell h5{font-family:var(--rd-font);font-weight:650;font-size:13px;margin-bottom:8px;color:var(--rd-ink)}
+.dv-body .case-cell p{color:var(--rd-ink-3);font-size:13px;line-height:1.62}
+.dv-body .case-impact{
+  gap:var(--rd-s-2);margin-top:var(--rd-s-3);padding-top:var(--rd-s-3);
+  border-top:1px solid var(--rd-line);
+}
+.dv-body .case-kpi{
+  background:var(--rd-surface);border:1px solid var(--rd-line);
+  border-radius:var(--rd-r-md);padding:var(--rd-s-2) 12px;
+}
+.dv-body .case-kpi .num{font-family:var(--rd-font);font-weight:800;letter-spacing:-.02em;color:var(--mint-2)}
+.dv-body .case-kpi .lbl{font-family:var(--rd-font);color:var(--rd-ink-4);font-size:10.5px;letter-spacing:.06em}
+
+/* ── Experience timeline ─────────────────────────────────────────────────────── */
+.dv-body .exp-block{
+  background:var(--rd-surface);border:1px solid var(--rd-line);
+  border-radius:var(--rd-r-xl);padding:var(--rd-s-4);box-shadow:var(--rd-shadow);
+  position:relative;transition:border-color .3s var(--ease),box-shadow .3s var(--ease),background .3s var(--ease);
+}
+.dv-body .exp-block + .exp-block{margin-top:var(--rd-s-3)}
+@media(hover:hover){.dv-body .exp-block:hover{border-color:var(--rd-line-hover);box-shadow:var(--rd-shadow-2);background:var(--rd-surface-2)}}
+.dv-body .exp-header{
+  gap:var(--rd-s-2);padding-bottom:var(--rd-s-2);margin-bottom:var(--rd-s-3);
+  border-bottom:1px solid var(--rd-line);
+}
+.dv-body .exp-role{font-family:var(--rd-font);font-weight:650;font-size:clamp(16px,2.2vw,18px);letter-spacing:-.015em;color:var(--rd-ink)}
+.dv-body .exp-org{color:var(--rd-ink-3);font-size:13.5px;margin-top:4px}
+.dv-body .exp-dates{
+  font-family:var(--rd-font);font-weight:600;font-size:12px;letter-spacing:.02em;
+  color:var(--rd-ink-2);background:var(--rd-surface-2);border:1px solid var(--rd-line);
+  border-radius:var(--rd-r-pill);padding:6px 13px;white-space:nowrap;height:fit-content;
+}
+.dv-body .exp-bullets li{color:var(--rd-ink-2);line-height:1.66}
+.dv-body .exp-bullets li::marker{color:var(--blue)}
+.dv-body .recognition{
+  margin-top:var(--rd-s-3);border-radius:var(--rd-r-md);
+  border:1px solid rgba(251,191,36,.28);background:rgba(251,191,36,.07);
+}
+
+/* ── Power BI architecture ───────────────────────────────────────────────────── */
+.dv-body .architecture-flow{gap:var(--rd-s-2)}
+.dv-body .arch-stage{
+  background:var(--rd-surface);border:1px solid var(--rd-line);
+  border-radius:var(--rd-r-md);padding:var(--rd-s-3);
+  transition:border-color .28s var(--ease),transform .28s var(--ease),background .28s var(--ease);
+}
+@media(hover:hover){.dv-body .arch-stage:hover{border-color:var(--rd-line-hover);transform:translateY(-3px);background:var(--rd-surface-2)}}
+.dv-body .arch-stage-num{font-family:var(--rd-font);font-weight:800;color:var(--blue-2);letter-spacing:-.02em}
+.dv-body .arch-stage-title{font-family:var(--rd-font);font-weight:600;color:var(--rd-ink-2)}
+.dv-body .schema-grid{gap:var(--rd-s-3)}
+.dv-body .schema-block{padding:var(--rd-s-3);border-radius:var(--rd-r-lg)}
+.dv-body .schema-block h4{margin-bottom:12px}
+.dv-body .schema-block li{color:var(--rd-ink-3);line-height:1.7}
+.dv-body .schema-block li strong{color:var(--rd-ink)}
+.dv-body .dax-block{
+  background:var(--rd-inset);border:1px solid var(--rd-line);
+  border-radius:var(--rd-r-lg);box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+}
+
+/* ── Visual analytics specs ──────────────────────────────────────────────────── */
+.dv-body .viz-spec{border-radius:var(--rd-r-xl);padding:0;overflow:hidden}
+.dv-body .viz-spec + .viz-spec{margin-top:var(--rd-s-3)}
+.dv-body .viz-head{
+  gap:var(--rd-s-2);padding:var(--rd-s-3) var(--rd-s-4);
+  background:var(--rd-surface);border-bottom:1px solid var(--rd-line);align-items:center;
+}
+.dv-body .viz-num{
+  font-family:var(--rd-font);font-weight:800;color:var(--blue-2);
+  background:var(--rd-surface-2);border:1px solid var(--rd-line);
+  border-radius:12px;min-width:38px;height:38px;display:grid;place-items:center;letter-spacing:-.02em;
+}
+.dv-body .viz-title{font-family:var(--rd-font);font-weight:650;letter-spacing:-.012em;color:var(--rd-ink)}
+.dv-body .viz-type{
+  font-family:var(--rd-font);font-weight:600;font-size:11px;letter-spacing:.04em;
+  color:var(--rd-ink-3);background:var(--rd-surface-2);border:1px solid var(--rd-line);
+  border-radius:var(--rd-r-pill);padding:5px 12px;white-space:nowrap;
+}
+.dv-body .viz-body{gap:var(--rd-s-2);padding:var(--rd-s-4)}
+.dv-body .viz-cell{
+  background:var(--rd-inset);border:1px solid var(--rd-line);
+  border-radius:var(--rd-r-md);padding:var(--rd-s-3);
+}
+.dv-body .viz-cell h6{font-family:var(--rd-font);font-weight:650;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-2);margin-bottom:8px}
+.dv-body .viz-cell p{color:var(--rd-ink-3);font-size:13px;line-height:1.6}
+
+/* ── Live dashboard ──────────────────────────────────────────────────────────── */
+.dv-body .kpi-grid{gap:var(--rd-s-2)}
+.dv-body .kpi{border-radius:var(--rd-r-lg);padding:var(--rd-s-3)}
+.dv-body .kpi-label{font-family:var(--rd-font);font-weight:600;color:var(--rd-ink-3);letter-spacing:.02em}
+.dv-body .kpi-value{font-family:var(--rd-font);font-weight:750;letter-spacing:-.02em;color:var(--rd-ink)}
+.dv-body .kpi-delta{font-family:var(--rd-font);font-weight:600}
+.dv-body .chart-grid{gap:var(--rd-s-3)}
+.dv-body .chart-card{border-radius:var(--rd-r-xl);padding:var(--rd-s-3)}
+.dv-body .chart-header{margin-bottom:var(--rd-s-2)}
+.dv-body .chart-title{font-family:var(--rd-font);font-weight:650;letter-spacing:-.012em;color:var(--rd-ink)}
+.dv-body .chart-meta{font-family:var(--rd-font);color:var(--rd-ink-4);font-size:11.5px}
+.dv-body .insight-en,.dv-body .insight-ar{border-radius:var(--rd-r-md);line-height:1.6}
+.dv-body .insight-en strong,.dv-body .insight-ar strong{color:var(--rd-ink)}
+
+/* Ratio table → clean modern data table */
+.dv-body .ratio-table{font-family:var(--rd-font)}
+.dv-body .ratio-table th{
+  font-weight:650;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--rd-ink-4);border-bottom:1px solid var(--rd-line-2);padding:12px 14px;
+}
+.dv-body .ratio-table td{color:var(--rd-ink-2);border-bottom:1px solid var(--rd-line);padding:12px 14px}
+.dv-body .ratio-table tbody tr{transition:background .2s var(--ease)}
+@media(hover:hover){.dv-body .ratio-table tbody tr:hover{background:var(--rd-surface)}}
+.dv-body .ratio-table .tag{
+  font-family:var(--rd-font);font-weight:650;font-size:10.5px;letter-spacing:.06em;
+  border-radius:var(--rd-r-pill);padding:4px 10px;
+}
+
+/* ── Education certifications ─────────────────────────────────────────────────── */
+.dv-body .cert-cluster{margin-top:var(--rd-s-5)}
+.dv-body .cert-cluster-head{
+  font-family:var(--rd-font);font-weight:650;letter-spacing:-.01em;color:var(--rd-ink);
+  margin-bottom:var(--rd-s-3);
+}
+.dv-body .cert-list{gap:12px}
+.dv-body .cert{
+  background:var(--rd-surface);border:1px solid var(--rd-line);
+  border-radius:var(--rd-r-md);padding:var(--rd-s-2) var(--rd-s-3);
+  transition:border-color .26s var(--ease),transform .26s var(--ease),background .26s var(--ease);
+}
+@media(hover:hover){.dv-body .cert:hover{border-color:var(--rd-line-hover);transform:translateY(-2px);background:var(--rd-surface-2)}}
+.dv-body .cert strong{color:var(--rd-ink)}
+.dv-body .cert .issuer{color:var(--rd-ink-3)}
+.dv-body .cert .year{
+  font-family:var(--rd-font);font-weight:600;color:var(--blue-2);
+  background:rgba(86,180,255,.10);border:1px solid rgba(86,180,255,.22);
+  border-radius:var(--rd-r-pill);padding:3px 10px;font-size:11px;
+}
+
+/* ── AR banner / positioning quote (ai section) ──────────────────────────────── */
+.dv-body .ar-banner{
+  border-radius:var(--rd-r-lg);border:1px solid var(--rd-line);
+  background:var(--rd-surface);
+}
+.dv-body #ai .positioning-quote,.dv-body .positioning-quote{
+  border-radius:var(--rd-r-xl);border:1px solid var(--rd-line);
+  background:var(--rd-surface);line-height:1.72;color:var(--rd-ink-2);
+}
+.dv-body .positioning-quote strong{color:var(--rd-ink)}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   5 · MOBILE-FIRST RESPONSIVE — single-column, comfortable touch targets
+   ══════════════════════════════════════════════════════════════════════════════ */
+@media(max-width:720px){
+  .dv-body .positioning-pillars,
+  .dv-body .matrix-grid,
+  .dv-body .cards-3,
+  .dv-body .cards-4,
+  .dv-body .schema-grid,
+  .dv-body .case-grid,
+  .dv-body .viz-body,
+  .dv-body .kpi-grid,
+  .dv-body .chart-grid,
+  .dv-body .cert-list{grid-template-columns:1fr !important}
+
+  .dv-body .pillar,
+  .dv-body .matrix-cluster,
+  .dv-body .icon-card,
+  .dv-body .stat-block,
+  .dv-body .case-block,
+  .dv-body .exp-block,
+  .dv-body .schema-block{padding:var(--rd-s-3) !important}
+
+  .dv-body .case-header,
+  .dv-body .exp-header,
+  .dv-body .viz-head{flex-direction:column;align-items:flex-start}
+  .dv-body .case-impact{flex-wrap:wrap}
+  .dv-body .arch-stage{padding:var(--rd-s-2) var(--rd-s-3)}
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   6 · ACCESSIBILITY — focus rings + reduced motion
+   ══════════════════════════════════════════════════════════════════════════════ */
+.dv-body a:focus-visible,
+html.dl-ready .dl-trigger:focus-visible .dl-go{box-shadow:var(--rd-ring);outline:none}
+@media(prefers-reduced-motion:reduce){
+  .dv-body .pillar,.dv-body .matrix-cluster,.dv-body .icon-card,.dv-body .stat-block,
+  .dv-body .case-block,.dv-body .case-cell,.dv-body .exp-block,.dv-body .arch-stage,
+  .dv-body .schema-block,.dv-body .viz-spec,.dv-body .kpi,.dv-body .chart-card,
+  .dv-body .cert,html.dl-ready section.section:not(#cover):not(#summary):not(#branding),
+  html.dl-ready section.section:not(#cover):not(#summary):not(#branding)::before{transition:none}
+  .dv-body .pillar:hover,.dv-body .matrix-cluster:hover,.dv-body .icon-card:hover,
+  .dv-body .stat-block:hover,.dv-body .case-block:hover,.dv-body .exp-block:hover,
+  .dv-body .arch-stage:hover,.dv-body .cert:hover{transform:none}
+}
+</style>
 </body>
 </html>
