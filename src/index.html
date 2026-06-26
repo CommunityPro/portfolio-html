@@ -2187,7 +2187,10 @@ body.splash-lock{overflow:hidden}
 
 <style id="hero-video-bg">
 /* ══ HERO SECTION · VIDEO BACKGROUND ══ */
-#cover{overflow:hidden}
+/* translateZ(0) gives the hero its own compositor layer so the fixed
+   backdrop-filter navbar + animated background layers no longer force the
+   video to repaint on scroll (fixes the shimmer / brightness flicker). */
+#cover{overflow:hidden;transform:translateZ(0)}
 
 .cover-video-bg{
   position:absolute;inset:0;
@@ -2195,9 +2198,15 @@ body.splash-lock{overflow:hidden}
   object-fit:cover;
   z-index:0;
   pointer-events:none;
+  /* Promote the video onto a stable GPU layer → no sub-pixel shimmer */
+  transform:translateZ(0);
+  -webkit-backface-visibility:hidden;backface-visibility:hidden;
+  will-change:transform;
 }
 .cover-video-overlay{
   position:absolute;inset:0;z-index:1;pointer-events:none;
+  transform:translateZ(0);              /* keep overlay on the video's layer */
+  -webkit-backface-visibility:hidden;backface-visibility:hidden;
   background:
     linear-gradient(90deg,
       rgba(5,7,15,.82) 0%,
@@ -2228,6 +2237,11 @@ body.splash-lock{overflow:hidden}
 
 @media(prefers-reduced-motion:reduce){
   .cover-video-bg{display:none}
+}
+/* background-attachment:fixed is a known scroll-jitter source on touch devices;
+   let the subtle grid scroll with content there for a smooth, flicker-free hero */
+@media(max-width:1024px){
+  body{background-attachment:scroll}
 }
 </style>
 <style id="md-styles">
@@ -4800,7 +4814,13 @@ html.light .kpi-bottom-accent{
       else close();
     });
     var hsh=location.hash.slice(1);
-    if(recs[hsh]){ history.replaceState({dv:hsh},'','#'+hsh); open(hsh, false); }
+    if(recs[hsh]){
+      /* seed a list entry first so Back from a direct #section link closes to the list
+         (instead of leaving the page), matching the row-click open() flow */
+      history.replaceState(null, '', location.pathname + location.search);
+      history.pushState({dv:hsh}, '', '#'+hsh);
+      open(hsh, false);
+    }
   }
   if(document.readyState==='complete') setTimeout(init,30);
   else window.addEventListener('load', function(){ setTimeout(init,30); });
@@ -4868,8 +4888,8 @@ html.dl-ready section.section:not(#cover):not(#summary):not(#branding){
   border-top:1px solid var(--rd-line);
   transition:background .28s var(--ease), box-shadow .28s var(--ease);
 }
-/* hairline closes the list after the last styled row (education) */
-#branding{border-top:1px solid var(--rd-line)}
+/* hairline closes the list after the last styled in-scope row; #branding stays untouched */
+html.dl-ready #education{border-bottom:1px solid var(--rd-line)}
 
 @media(hover:hover){
   html.dl-ready section.section:not(#cover):not(#summary):not(#branding):hover{
