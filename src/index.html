@@ -5821,5 +5821,53 @@ html.dl-ready #education::after {
   else window.addEventListener('load',function(){setTimeout(setup,60);});
 })();
 </script>
+<style id="press-polish">
+/* ════════════════════════════════════════════════════════════════════════════
+   PRESS / TAP POLISH
+   Removes the two artefacts seen when pressing a card or row:
+   1. the default mobile tap-highlight box flash
+   2. accidental text-selection when a click drifts a few px (app-card surfaces
+      should not select like a paragraph)
+   Copyable content (cover / summary / branding contact details) stays selectable
+   and gets a branded selection colour instead of the default grey.
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* 1 · no tap-highlight flash anywhere */
+* { -webkit-tap-highlight-color: transparent; }
+
+/* 2 · navigation chrome is never selectable */
+html.dl-ready section.section:not(#cover):not(#summary):not(#branding),
+.dl-trigger, .dl-trigger *,
+.eyebrow.dl-clickable,
+.dv-bar, .dv-back, .dv-back *,
+.quick-jump-trigger, .theme-toggle {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+/* 3 · detail-view content cards behave like app surfaces (no select on press) */
+.dv-body .pillar,
+.dv-body .matrix-cluster,
+.dv-body .icon-card,
+.dv-body .stat-block,
+.dv-body .case-block, .dv-body .case-cell,
+.dv-body .exp-block,
+.dv-body .arch-stage,
+.dv-body .schema-block,
+.dv-body .viz-spec,
+.dv-body .kpi, .dv-body .kpi-card,
+.dv-body .chart-card,
+.dv-body .cert,
+.dv-body .skill-row {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+/* 4 · where selection is still allowed, make it on-brand */
+::selection      { background: rgba(86,180,255,.30); color: #fff; }
+::-moz-selection { background: rgba(86,180,255,.30); color: #fff; }
+</style>
 </body>
 </html>
