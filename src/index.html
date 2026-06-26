@@ -5350,6 +5350,10 @@ html.dl-ready section.section:not(#cover):not(#summary):not(#branding) h2 {
 /* ── lift dv-body above #detail-view::before layer ── */
 .dv-body { position: relative; z-index: 1; }
 
+/* ── clip animation bleed so scaling/rotating layers never widen the page ── */
+html.dl-ready section.section:not(#cover):not(#summary):not(#branding) {
+  overflow: hidden;
+}
 /* ── collapsed row shared ::after layer ── */
 html.dl-ready section.section:not(#cover):not(#summary):not(#branding)::after {
   content: '';
@@ -5358,6 +5362,13 @@ html.dl-ready section.section:not(#cover):not(#summary):not(#branding)::after {
   pointer-events: none;
   z-index: 0;
   will-change: transform, opacity;
+}
+/* ── detail-view container: explicit viewport width defeats the shrink-to-fit
+   quirk an absolutely-positioned ::before triggers on a fixed flex box, and
+   overflow:hidden clips the animated layer (the inner .dv-body still scrolls) ── */
+#detail-view[data-open-sec] {
+  width: 100vw;
+  overflow: hidden;
 }
 /* ── detail-view shared ::before layer ── */
 #detail-view[data-open-sec]::before {
