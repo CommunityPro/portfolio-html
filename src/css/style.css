@@ -46,6 +46,7 @@
 html {
   font-size: 100%;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 /* Reset default styling */
@@ -331,4 +332,26 @@ body {
     border-radius: 5px;
     width: 80%;
   }
+}
+
+.skills{
+
+  gap: 10%;
+  color: black;
+  border-radius: 3%;
+  margin: 0.5%;
+  background-color: #f9f9f9;
+  width: 100%;
+ 
+}
+
+
+.skills img{
+  width: 140px;
+  height: 150px;
+  padding: 15px;
+}
+
+.skillsMarquee.stopped {
+  animation-play-state: paused;
 }
