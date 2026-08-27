@@ -332,3 +332,35 @@ body {
     width: 80%;
   }
 }
+
+
+
+
+
+
+#skills {
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin: 40px auto;
+  max-width: 800px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+#skills h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color:black !important;
+}
+
+#skills ul {
+  list-style: none;
+  padding: 0;
+}
+
+#skills li {
+  font-size: 18px;
+  margin: 10px 0;
+  color: black !important;
+}
