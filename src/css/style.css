@@ -31,7 +31,7 @@
   --width-large: 1300px;
 }
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   --primary-color: #ffcd42;
   --secondary-color: #ffd35c;
   --bg-primary: #000000;
@@ -68,7 +68,7 @@ a {
 body {
   background: var(--bg-primary);
   color: var(--text-color);
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   line-height: 1.5;
 }
 
