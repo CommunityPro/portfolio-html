@@ -103,6 +103,12 @@ body {
   font-weight: var(--weight-semibold);
 }
 
+.navbar .nav-link:hover{
+  color:#fdea6b;
+  font-size:1rem;
+  transition:.3s;
+}
+
 .navbar #logo img {
   display: block;
   width: 40px;
