@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Error Page | Codebyadnan</title>
+    <!-- Favicons -->
+        <link href="assets/images/favicon.ico" rel="icon" />
+        <link href="assets/images/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!--Canonical tag -->
+        <link rel="canonical" href="https://www.codebyadnan.com/404.html" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:type" content="article" />
+        <meta
+        property="og:title"
+        content="Unlock Online Success with CodebyAdnan: Expert Web Design & SEO Strategies"
+        />
+        <meta property="og:url" content="https://www.codebyadnan.com/" />
+        <meta property="og:site_name" content="CodeByAdnan" />
+        <meta property="og:image:width" content="512" />
+        <meta
+        properrty="article:publisher"
+        content="https://www.facebook.com/adnankhmalik.me/"
+        />
+        <meta propety="og:image:height" content="512" />
+        <meta
+        name="twitter:title"
+        content="Explore CodebyAdnan - Your Web Solutions Hub 🚀"
+        />
+    <!--Css links-->
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+       <div class="error-bg">
+         <div class="error-item">
+             <div class="error-heading">
+                <span class="error-title">404</span>
+                <p class="error-sub-title">Page Not Found</p>
+                <p class="error-alert">Oops! The page you're looking for isn't here. Let me help you find it.</p>
+                <div class="error-btn">
+                    <a href="/" class="error-back-btn">Go Home</a>
+                </div>
+             </div>
+         </div>
+         <div class="error-page-mode" onclick="toggleErrorMode()">
+            <i class="fa-solid fa-moon"></i>
+            <i class="fa-solid fa-sun"></i>
+          </div>
+        </div>
+    <script>
+        function toggleErrorMode() {
+            var errorPage = document.querySelector('.error-page-mode');
+            var errorBg = document.querySelector('.error-bg');
+            var moonIcon = document.querySelector('.fa-moon');
+            // Toggle dark mode class on the document body
+            document.body.classList.toggle('dark-mode');
+            // Toggle classes for elements based on dark mode
+            errorBg.classList.toggle('dark-error-bg');
+            errorPage.classList.toggle('light-mode');
+            moonIcon.classList.toggle('fa-sun'); // Change the moon icon to a sun icon for light mode
+        }
+      </script>
+    <script
+    src="https://kit.fontawesome.com/9498bdc1c3.js"
+    crossorigin="anonymous"
+  ></script>
+</body>
+</html>
